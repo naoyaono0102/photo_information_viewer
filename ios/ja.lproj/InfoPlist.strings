@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by 尾野順哉 on 2023/05/20.
+  
+*/
+CFBundleDisplayName = "写真情報";
+NSUserTrackingUsageDescription = "許可することで、興味・関心がない広告が配信されにくくなります。";

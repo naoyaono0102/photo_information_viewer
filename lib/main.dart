@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:photo_information_viewer/utils/style.dart';
 import 'package:photo_information_viewer/view/home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'di/providers.dart';
+import 'generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,8 +30,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        theme: darkTheme.copyWith(
+            primaryColor: kScaffoldBackgroundColor,
+            textTheme: GoogleFonts.ibmPlexSansTextTheme(
+            //     Theme.of(context).textTheme.copyWith(
+            //       bodyText1: TextStyle(
+            //         fontSize: 18,
+            //         color: kBase2TextColor,
+            //       ),
+            //       bodyText2: TextStyle(
+            //         fontSize: 16,
+            //         color: kBase2TextColor,
+            //       ),
+            //     )
+            ),
         ),
         home: const HomeScreen()
     );

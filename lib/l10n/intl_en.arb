@@ -1,0 +1,1324 @@
+{
+  "@@locale": "en",
+
+  "edit": "Edit",
+  "@edit": {
+    "description": "編集"
+  },
+
+  "delete": "Delete",
+  "@delete": {
+    "description": "削除"
+  },
+
+  "deleteAll": "Delete All",
+  "@deleteAll": {
+    "description": "全削除"
+  },
+
+  "change": "Change",
+  "@change": {
+    "description": "変更"
+  },
+
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "キャンセル"
+  },
+
+  "add": "Add",
+  "@add": {
+    "description": "追加"
+  },
+
+  "close": "Close",
+  "@close": {
+    "description": "閉じる"
+  },
+
+  "settings": "Settings",
+  "@settings": {
+    "description": "設定"
+  },
+
+  "note": "Note",
+  "@note": {
+    "description": "メモ"
+  },
+
+  "fontSize": "Font Size",
+  "@fontSize": {
+    "description": "文字のサイズ"
+  },
+
+  "letterSpacing": "Kerning\n(title)",
+  "@letterSpacing": {
+    "description": "文字の間隔"
+  },
+
+  "letterSpacingSub": "Kerning\n(subtitle)",
+  "@letterSpacing": {
+    "description": "文字の間隔"
+  },
+
+  "lineSpacing": "Line Spacing",
+  "@lineSpacing": {
+    "description": "行間"
+  },
+
+  "rowHeight": "Row Height",
+  "@rowHeight": {
+    "description": "リストの高さ"
+  },
+
+  "showDate": "Show Date",
+  "@showDate": {
+    "description": "日付を表示"
+  },
+
+  "listSetting": "List Setting",
+  "@listSetting": {
+    "description": "リストの設定"
+  },
+
+  "noteSetting": "Note Setting",
+  "@noteSetting": {
+    "description": "メモの設定"
+  },
+
+  "back": "Back",
+  "@back": {
+    "description": "戻る"
+  },
+
+  "category": "Category",
+  "@category": {
+    "description": "カテゴリー"
+  },
+
+  "search": "Search",
+  "@search": {
+    "description": "検索"
+  },
+
+  "title": "Title",
+  "@title": {
+    "description": "タイトル"
+  },
+
+  "moveCategory": "Transfer",
+  "@moveCategory": {
+    "description": "カテゴリー変更"
+  },
+
+  "moveCategoryPageTitle": "Change category",
+  "@moveCategoryPageTitle": {
+    "description": "カテゴリー移動"
+  },
+
+
+  "moveCategoryMessage": "Select which category to transfer to.",
+  "@moveCategoryMessage": {
+    "description": "移動先のカテゴリーを選択してください"
+  },
+
+  "currentCategory": "Current Category",
+  "@currentCategory": {
+    "description": "現在のカテゴリー"
+  },
+
+  "template": "Template",
+  "@template": {
+    "description": "定型文"
+  },
+
+  "templateList": "Template List",
+  "@templateList": {
+    "description": "定型文一覧"
+  },
+
+  "templateBottomButton": "Templates",
+  "@templateBottomButton": {
+    "description": "定型文管理"
+  },
+
+
+  "categoryList": "Category List",
+  "@categoryList": {
+    "description": "カテゴリー一覧"
+  },
+
+  "templateCategory": "Category List",
+  "@templateCategory": {
+    "description": "定型文カテゴリー"
+  },
+
+  "deleteConfirmation": "Delete Confirmation",
+  "@deleteConfirmation": {
+    "description": "削除確認"
+  },
+
+  "deleteThisNoteConfirmationMessage": "Are you sure you want to delete this note?",
+  "@deleteThisNoteConfirmationMessage": {
+    "description": "このメモを削除してもよろしいですか？"
+  },
+
+  "deleteMultiNoteConfirmationMessage": "Are you sure you want to delete the selected notes?",
+  "@deleteMultiNoteConfirmationMessage": {
+    "description": "選択したメモを削除してもよろしいですか？"
+  },
+
+  "deleteThisCategoryConfirmationMessage": "Are you sure you want to delete this category?",
+  "@deleteThisCategoryConfirmationMessage": {
+    "description": "このカテゴリーをを削除するとカテゴリー内のメモも削除されますがよろしいですか？"
+  },
+
+  "deleteMultiCategoryConfirmationMessage": "Are you sure you want to delete the selected categories?",
+  "@deleteMultiCategoryConfirmationMessage": {
+    "description": "選択したカテゴリーを削除してもよろしいですか？"
+  },
+
+  "categoryNameBlankError": "Input category name.",
+  "@categoryNameBlankError": {
+    "description": "カテゴリー名を入力してください"
+  },
+
+  "templateBlankError": "Input text.",
+  "@templateBlankError": {
+    "description": "文章を入力してください"
+  },
+
+  "textBlankError": "Input text.",
+  "@textBlankError": {
+    "description": "文章を入力してください"
+  },
+
+  "titleBlankError": "Input title.",
+  "@titleBlankError": {
+    "description": "タイトルを入力してください"
+  },
+
+  "noData": "No Data",
+  "@noData": {
+    "description": "データがありません"
+  },
+
+  "noTemplate": "No Template",
+  "@noTemplate": {
+    "description": "定型文がありません"
+  },
+
+  "noCategory": "No Categories.\nClick + to add a category",
+  "@noCategory": {
+    "description": "カテゴリーの登録がありません"
+  },
+
+  "noNote": "No Notes .\nClick + to add a note",
+  "@noNote": {
+    "description": "メモがありません"
+  },
+
+  "noRestaurant": "No Restaurant",
+  "@noRestaurant": {
+    "description": "レストランの登録がありません"
+  },
+
+  "subject": "Questions or Suggestions about the Photo Information Viewer app",
+  "@subject": {
+    "description": "メールのタイトル"
+  },
+
+  "messageEmail": "Please write down your questions or suggestions.",
+  "@messageEmail": {
+    "description": "メールの内容"
+  },
+
+  "deleteSetting": "Confirmation Upon deletion",
+  "@deleteSetting": {
+    "description": "削除設定"
+  },
+
+  "registerSetting": "Multiple List Registration",
+  "@registerSetting": {
+    "description": "登録設定"
+  },
+
+
+  "registerSettingExplanation": "What is this setting?",
+  "@registerSettingExplanation": {
+    "description": "登録設定の説明タイトル"
+  },
+
+  "registerSettingDetail": "This setting lets you register multiple lists without having to close the dialogue box every time you tap the add button.",
+  "@registerSettingDetail": {
+    "description": "登録設定の説明"
+  },
+
+  "commentsOrSuggestions": "Comments or suggestions",
+  "@commentsOrSuggestions": {
+    "description": "ご意見・ご要望"
+  },
+
+  "aboutTheApp": "About the app",
+  "@aboutTheApp": {
+    "description": "アプリについてのラベル"
+  },
+
+  "changeTitle": "Change Title",
+  "@changeTitle": {
+    "description": "タイトルを変更"
+  },
+
+  "initialTitle": "What to eat?",
+  "@initialTitle": {
+    "description": "なに食べる？"
+  },
+
+  "selectFrom": "Select From",
+  "@selectFrom": {
+    "description": "どのデータ？"
+  },
+
+  "categoryFieldHintText": "Category Name",
+  "@categoryFieldHintText": {
+    "description": "挨拶など。"
+  },
+
+  "writeReview": "Write a review",
+  "@writeReview": {
+    "description": "レビューを書く"
+  },
+
+  "changeName": "Change name",
+  "@changeName": {
+    "description": "名前を変更。"
+  },
+
+  "editTemplate": "Edit Template",
+  "@editTemplate": {
+    "description": "定型文編集。"
+  },
+
+  "addTemplate": "Add Template",
+  "@addTemplate": {
+    "description": "定型文登録"
+  },
+
+  "changeCategory": "Change Category Name",
+  "@changeCategory": {
+    "description": "カテゴリー名を変更"
+  },
+
+  "addCategory": "Add Category",
+  "@addCategory": {
+    "description": "カテゴリーを追加"
+  },
+
+  "selectCategoryMessage": "Select a category",
+  "@selectCategoryMessage": {
+    "description": "カテゴリーを選択してください"
+  },
+
+  "korean": "Korean (Korea)",
+  "@korean": {
+    "description": "韓国語"
+  },
+
+  "russian": "Russian (Russia)",
+  "@russian": {
+    "description": "ロシア語"
+  },
+
+  "taiwanese": "Chinese (Taiwan)",
+  "@taiwanese": {
+    "description": "中国語（台湾）"
+  },
+
+  "hungarian": "Hungarian",
+  "@hungarian": {
+    "description": "ハンガリー語"
+  },
+
+  "thai": "Thai(Thailand)",
+  "@thai": {
+    "description": "タイ語"
+  },
+
+  "danish": "Danish (Denmark)",
+  "@danish": {
+    "description": "デンマーク語"
+  },
+
+  "turkish": "Turkish (Turkey)",
+  "@turkish": {
+    "description": "トルコ語"
+  },
+
+  "japanese": "Japanese (Japan)",
+  "@japanese": {
+    "description": "日本語"
+  },
+
+  "englishUS": "English (United States)",
+  "@englishUS": {
+    "description": "英語（アメリカ）"
+  },
+
+  "englishAU": "English (Australia)",
+  "@englishAU": {
+    "description": "英語（オーストラリア）"
+  },
+
+  "spanish": "Spanish (Spain)",
+  "@spanish": {
+    "description": "スペイン語"
+  },
+
+  "englishUK": "English (United Kingdom)",
+  "@englishUK": {
+    "description": "英語（イギリス）"
+  },
+
+  "vietnamese": "Vietnamese (Vietnam)",
+  "@vietnamese": {
+    "description": "ベトナム語"
+  },
+
+  "german": "German (Germany)",
+  "@german": {
+    "description": "ドイツ語"
+  },
+
+  "swedish": "Swedish (Sweden)",
+  "@swedish": {
+    "description": "スウェーデン語"
+  },
+
+  "french": "French (France)",
+  "@french": {
+    "description": "フランス語"
+  },
+
+  "ukrainian": "Ukrainian (Ukraine)",
+  "@ukrainian": {
+    "description": "ウクライナ語"
+  },
+
+  "dutch": "Dutch (Netherlands)",
+  "@dutch": {
+    "description": "オランダ語"
+  },
+
+  "portuguese": "Portuguese (Portugal)",
+  "@portuguese": {
+    "description": "ポルトガル語（ポルトガル）"
+  },
+
+  "czech": "Czech (Czech Republic)",
+  "@czech": {
+    "description": "チェコ語"
+  },
+
+  "hindi": "Hindi (India)",
+  "@hindi": {
+    "description": "ヒンディー語"
+  },
+
+  "polish": "Polish (Poland)",
+  "@polish": {
+    "description": "ポーランド語"
+  },
+
+  "estonian": "Estonian (Estonia)",
+  "@estonian": {
+    "description": "エストニア語"
+  },
+
+  "italian": "Italian (Italy)",
+  "@italian": {
+    "description": "イタリア語"
+  },
+
+  "indonesian": "Indonesian (Indonesia)",
+  "@indonesian": {
+    "description": "インドネシア語"
+  },
+
+  "romanian": "Romanian (Romania)",
+  "@romanian": {
+    "description": "ルーマニア語"
+  },
+
+  "greek": "Greek (Greece)",
+  "@greek": {
+    "description": "ギリシャ語"
+  },
+
+  "frenchCA": "French (Canada)",
+  "@frenchCA": {
+    "description": "フランス語（カナダ）"
+  },
+
+  "slovak": "Slovak (Slovakia)",
+  "@slovak": {
+    "description": "スロバキア語"
+  },
+
+
+  "finnish": "Finnish (Finland)",
+  "@finnish": {
+    "description": "フィンランド語"
+  },
+
+  "portugueseBZ": "Portuguese (Brazil)",
+  "@portugueseBZ": {
+    "description": "ポルトガル語（ブラジル）"
+  },
+
+  "norwegian": "Norwegian Bokmål (Norway)",
+  "@norwegian": {
+    "description": "ノルウェー語"
+  },
+
+  "bs": "Bosnian",
+  "@bs": {
+    "description": "ボスニア語"
+  },
+
+  "khmer": "Khmer",
+  "@khmer": {
+    "description": "クメール語"
+  },
+
+  "filipino": "Filipino",
+  "@filipino": {
+    "description": "フィリピン語"
+  },
+
+  "nepali": "Nepali",
+  "@nepali": {
+    "description": "ネパール語"
+  },
+
+  "croatian": "Croatian",
+  "@croatian": {
+    "description": "クロアチア語"
+  },
+
+
+  "chineseCN": "Chinese(China)",
+  "@chineseCN": {
+    "description": "中国語（中国）"
+  },
+
+  "welsh": "welsh",
+  "@welsh": {
+    "description": "ウェールズ語"
+  },
+
+  "albanian": "Albanian",
+  "@albanian": {
+    "description": "アルバニア語"
+  },
+
+  "cantonese": "Cantonese(Hong Kong)",
+  "@cantonese": {
+    "description": "広東語"
+  },
+
+  "englishIN": "English(India)",
+  "@englishIN": {
+    "description": "英語（インド）"
+  },
+
+  "spanishUS": "Spanish(United States)",
+  "@spanishUS": {
+    "description": "スペイン語（アメリカ）"
+  },
+
+  "latin": "Latin",
+  "@latin": {
+    "description": "ラテン語"
+  },
+
+  "englishIN": "English(India)",
+  "@englishIN": {
+    "description": "英語（インド）"
+  },
+
+  "catalan": "Catalan",
+  "@catalan": {
+    "description": "カタロニア語"
+  },
+
+  "tamil": "Tamil",
+  "@tamil": {
+    "description": "タミール語"
+  },
+
+  "sampleText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "@sampleText": {
+    "description": "サンプルテキスト"
+  },
+
+  "allNotes": "All Notes",
+  "@allNotes": {
+    "description": "メモ一覧"
+  },
+
+  "weather": "Weather",
+  "@weather": {
+    "description": "天気"
+  },
+
+
+  "water": "Water / Liquid",
+  "@water": {
+    "description": "水"
+  },
+
+  "feeling": "Feeling",
+  "@feeling": {
+    "description": "気持ち"
+  },
+
+  "sound": "Sound",
+  "@sound": {
+    "description": "音"
+  },
+
+  "voice": "Voice",
+  "@voice": {
+    "description": "声"
+  },
+
+  "clothes": "Clothes",
+  "@clothes": {
+    "description": "衣類"
+  },
+
+  "body": "Body",
+  "@body": {
+    "description": "体"
+  },
+
+  "state": "State",
+  "@state": {
+    "description": "状態"
+  },
+
+  "pain": "Pain",
+  "@pain": {
+    "description": "痛み・感覚"
+  },
+
+  "food": "Food",
+  "@food": {
+    "description": "食べ物"
+  },
+
+  "list": "List",
+  "@list": {
+    "description": "オノマトペ一覧"
+  },
+
+  "dbVersion": "Database Version",
+  "@dbVersion": {
+    "description": "DBバージョン"
+  },
+
+  "supportSite": "Support site",
+  "@supportSite": {
+    "description": "サポートサイト"
+  },
+
+  "others": "Others",
+  "@others": {
+    "description": "その他"
+  },
+
+  "resetConfirmation": "Do you want to reset the match?",
+  "@resetConfirmation": {
+    "description": "ゲームをリセットしますか？"
+  },
+
+  "finishConfirmation": "Do you want to end this game?",
+  "@finishConfirmation": {
+    "description": "このセットを終了させますか？"
+  },
+
+  "resetGame": "Reset Match",
+  "@resetGame": {
+    "description": "スコアをリセット"
+  },
+
+  "reset": "Reset",
+  "@reset": {
+    "description": "リセット"
+  },
+
+  "changeCourt": "Change court",
+  "@reset": {
+    "description": "チェンジコート"
+  },
+
+  "singles": "Singles",
+  "@singles": {
+    "description": "シングルス"
+  },
+
+  "doubles": "Doubles",
+  "@doubles": {
+    "description": "ダブルス"
+  },
+
+  "resetGameAlert": "Please reset the match",
+  "@resetGameAlert": {
+    "description": "ゲームをリセットしてください"
+  },
+
+
+  "gameType": "Type of match",
+  "@gameType": {
+    "description": "試合の種類"
+  },
+
+  "typeA": "3 set match",
+  "@typeA": {
+    "description": "21ポイントマッチ"
+  },
+
+  "typeB": "5 set match",
+  "@typeB": {
+    "description": "25ポイントマッチ"
+  },
+
+  "typeC": "15 point match",
+  "@typeB": {
+    "description": "15ポイントマッチ"
+  },
+
+  "soundEffect": "Sound effect",
+  "@soundEffect": {
+    "description": "効果音"
+  },
+
+  "blue": "Blue",
+  "@blue": {
+    "description": "青"
+  },
+
+  "red": "Red",
+  "@red": {
+    "description": "赤"
+  },
+
+  "green": "Green",
+  "@green": {
+    "description": "緑"
+  },
+
+  "yellow": "Yellow",
+  "@yellow": {
+    "description": "黄"
+  },
+
+  "orange": "Orange",
+  "@orange": {
+    "description": "オレンジ"
+  },
+
+  "white": "White",
+  "@white": {
+    "description": "白"
+  },
+
+  "team1TextColor": "Score Color Team1",
+  "@team1TextColor": {
+    "description": "チーム１文字色"
+  },
+
+  "team2TextColor": "Score Color Team2",
+  "@team2TextColor": {
+    "description": "チーム２文字色"
+  },
+
+  "matchPointTextColor": "Match point color",
+  "@matchPointTextColor": {
+    "description": "マッチポイントカラー"
+  },
+
+  "changeColorAtMatchPoint": "Change the color at match point",
+  "@changeColorAtMatchPoint": {
+    "description": "マッチポイント時に色を変える"
+  },
+
+  "colorOfTheScore": "Color of the score",
+  "@colorOfTheScore": {
+    "description": "スコアのカラー"
+  },
+
+  "showTeamName": "Show team name",
+  "@showTeamName": {
+    "description": "チーム名を表示"
+  },
+
+  "preventSleep": "Prevent sleep",
+  "@preventSleep": {
+    "description": "スリープ防止"
+  },
+
+  "hideAds": "Hide ads for 24 hours (free)",
+  "@hideAds": {
+    "description": "広告非表示"
+  },
+
+  "expirationDate": "Expiration Date",
+  "@expirationDate": {
+    "description": "有効期限："
+  },
+
+  "hideAdsDialogTitle": "Hide ads for 24 hours when you watch a video ad.",
+  "@hideAdsDialogTitle": {
+    "description": "動画広告を見ると２４時間、画面下のバナー広告が非表示になります"
+  },
+
+  "hideAdsNotes": "* Please do this in a place with a good Internet connection. If an error occurs, you may be asked to watch the video again.",
+  "@hideAdsNotes": {
+    "description": "通信環境の良いところで行ってください。エラーが発生した場合、再度動画を視聴していただく場合もございます。"
+  },
+
+  "watchAds": "Watch",
+  "@watchAds": {
+    "description": "広告を見る"
+  },
+
+  "hideAdsMessage": "Ads are now hidden for 24 hours.",
+  "@hideAdsMessage": {
+    "description": "２４時間広告が非表示になりました。"
+  },
+
+  "ads": "Ads",
+  "@ads": {
+    "description": "広告"
+  },
+
+  "fillWithZero": "2 digit format",
+  "@fillWithZero": {
+    "description": "ゼロ埋め"
+  },
+
+  "descriptionTitleOfFillZero": "What's \"2 digit format\"?",
+  "@descriptionTitleOfFillZero": {
+    "description": "「ゼロ埋め」とは？"
+  },
+
+  "descriptionOfFillZero": "\"2 digit format\" means to fill in the tenth place with zeroes, as in 01, when the score is in single digits.",
+  "@descriptionOfFillZero": {
+    "description": "「ゼロ埋め」とは、得点が一桁の場合、００１のように十の位や百の位を０で埋めることです。"
+  },
+
+  "scoreSetting": "Score",
+  "@scoreSetting": {
+    "description": "スコア"
+  },
+
+  "resetAll": "Reset All",
+  "@resetAll": {
+    "description": "全てリセット"
+  },
+
+  "resetScore": "Reset Score",
+  "@resetScore": {
+    "description": "得点をリセット"
+  },
+
+  "resetFouls": "Reset Penalty",
+  "@resetFouls": {
+    "description": "ファールリセット"
+  },
+
+  "resetTime": "Reset Timer",
+  "@resetTime": {
+    "description": "タイマーリセット"
+  },
+
+  "ippon": "Ippon",
+  "@ippon": {
+    "description": "一本"
+  },
+
+  "wazaari": "Waza\nari",
+  "@wazaari": {
+    "description": "技あり"
+  },
+
+  "yuko": "Yuko",
+  "@yuko": {
+    "description": "有効"
+  },
+
+  "cancelSenshu": "Do you want to disable SENSHU indicator?",
+  "@cancelSenshu": {
+    "description": "先取を取り消しますか？"
+  },
+
+  "general": "General",
+  "@general": {
+    "description": "一般"
+  },
+
+  "theme1": "Theme 1",
+  "@theme1": {
+    "description": "テーマ１"
+  },
+
+  "theme2": "Theme 2",
+  "@theme2": {
+    "description": "テーマ２"
+  },
+
+  "displayMilliseconds": "Displays milliseconds when there are less than 60 seconds remaining",
+  "@displayMilliseconds": {
+    "description": "残り時間１分を切った時、ミリ秒を表示"
+  },
+
+  "matchTime": "Game Time",
+  "@matchTime": {
+    "description": "試合時間"
+  },
+
+  "sound": "Sound",
+  "@sound": {
+    "description": "サウンド"
+  },
+
+  "playSound": "Play a sound when the countdown is over.",
+  "@playSound": {
+    "description": "試合終了時に音を鳴らす"
+  },
+
+  "theme": "Theme",
+  "@theme": {
+    "description": "テーマ"
+  },
+
+  "soundType": "Sound type",
+  "@soundType": {
+    "description": "音の種類"
+  },
+
+  "buzzer": "Buzzer",
+  "@buzzer": {
+    "description": "ブザー"
+  },
+
+  "whistle": "Whistle1",
+  "whistle2": "Whistle2",
+
+
+  "match": "Match",
+  "@match": {
+    "description": "試合"
+  },
+
+  "goldenRound": "Golden Round",
+  "@goldenRound": {
+    "description": "延長戦"
+  },
+
+  "penalty": "Penalty",
+  "@penalty": {
+    "description": "ペナルティ"
+  },
+
+  "textColor": "Text color",
+  "@textColor": {
+    "description": "テキストカラー"
+  },
+
+  "osaekomi": "Osaekomi",
+  "@osaekomi": {
+    "description": "抑え込み"
+  },
+
+  "toketa": "Toketa",
+  "@toketa": {
+    "description": "解けた"
+  },
+
+  "showPlayerName": "Show player name",
+  "@showPlayerName": {
+    "description": "選手名を表示"
+  },
+
+  "matchTimer": "Match timer",
+  "@matchTimer": {
+    "description": "試合用タイマー"
+  },
+
+  "osaekomiTimer": "Osaekomi Timer",
+  "@osaekomiTimer": {
+    "description": "抑え込み用タイマー"
+  },
+
+  "color": " color",
+  "@color": {
+    "description": "〜の色"
+  },
+
+  "osaekomiTimerColor": " osaekomi timer color",
+  "@osaekomiTimerColor": {
+    "description": "〜の抑え込みタイマーカラー"
+  },
+
+  "players": "Players",
+  "@players": {
+    "description": "選手"
+  },
+
+  "appTitle": "Field Hockey Scoreboard",
+  "number": "Player",
+  "uniformNumber" : "Player",
+  "quarter" : "Quarter",
+  "team": "Team",
+  "removePenaltyConfirmation":"Do you want to remove the penalty for this player?",
+  "endMinorPenaltyConfirmation": "Do you want to end the minor penalty for this team? In the case of a double-minor penalty, two minutes will be deducted.",
+  "resetPenaltyConfirmation":"Do you want to reset the penalties for this team?",
+  "minor": "Minor",
+  "notMinor" : "Non-Minor",
+  "extend" : "Overtime",
+  "menu" : "Menu",
+  "toNextQuarter" : "Next Quarter",
+  "toPreviousQuarter" : "Previous Quarter",
+  "intervalTimer" : "Interval timer",
+  "switchTheTeam": "Switch the teams",
+  "horn": "Horn",
+  "gameTime":"Game time（1st/2nd）",
+  "extTime":"Extra time（1st/2nd）",
+  "intervalTime":"Interval time",
+  "halfTime": "Half time",
+  "twoMinutesBreak":"2 minute break",
+  "halfTimeTimer": "Half time timer",
+  "update": "Update",
+  "relatedApps": "Related app",
+  "fieldHockeyTacticBoard": "Field Hockey Tactic Board",
+  "iceHockeyTacticBoard": "Ice Hockey Tactic Board",
+  "iceHockeyScoreBoard": "Ice Hockey Scoreboard",
+  "supportDeveloper": "Support Developer",
+  "supportDeveloperSubtitle": "Be able to support developers by purchasing it. There is no change in functionality, but it will motivate developers.",
+  "hideAdsSubtitle": "By watching video ads, you can hide ads 24 hours.",
+  "removeAds": "Remove ads (paid)",
+  "removeAdsSubtitle": "By purchasing a paid plan, you can hide ads forever.",
+  "alreadyPurchased": "You have already purchased this item.",
+  "recoverPurchase": "Restore the ad removal plan",
+  "recoverPurchaseSubtitle": "If you have already purchased an ad removal plan, you can restore it by tapping here.",
+  "black": "Black",
+  "backgroundColor": " background color",
+  "automaticPauseTimer": "Pause the timer when points are added, subtracted, or fouled.",
+  "technical": "Technical",
+  "personal": "Personal",
+  "switchScore": "Switch score",
+  "bell": "Bell",
+  "minutes": "Match Time (Minutes)",
+  "seconds": "Match Time (Seconds)",
+  "m": "M",
+  "s": "S",
+  "currentColor": "Current color",
+  "scoreColor": "Score color",
+  "startTimeout": "Do you want to start a time out?",
+  "finishTimeOut": "Do you want to end the time out?",
+  "start": "START",
+  "finish": "End",
+  "resetTimeout": "Do you want ot reset time out?",
+  "penaltyTimer": "Penalty timer",
+  "overTime": "Overtime",
+  "ot": "OT",
+  "yellowCard": "Yellow card",
+  "redCard": "Red card",
+  "yellowRedCard": "Yellow & Red card",
+  "automaticPenaltyDeleteatDescription": "Automatic deletion when the penalty timer count reaches zero",
+  "matchType": "Match type",
+  "period": "Period",
+  "timeoutTimer": "Timeout timer",
+  "shotClock": "Shot clock",
+  "gameTimer": "Game Timer",
+  "playSoundWhenCountingDone": "Play a sound when the count is over.",
+  "waterPoloTacticBoard": "Water Polo Tactic Board",
+  "soccerTacticBoard": "Soccer Tactic Board",
+  "futsalTacticBoard": "Futsal Tactic Board",
+  "futsalScoreboard": "Futsal Scoreboard",
+  "soccerPlanner": "Soccer Schedule Planner",
+  "fitnessTimer": "Fitness Timer",
+  "soundSettings": "Sound settings",
+  "first": "1st",
+  "second": "2nd",
+  "ext1": "Ext1",
+  "ext2": "Ext2",
+  "total": "Total",
+  "gameSettings": "Game settings",
+  "toNextPeriodConfirmation": "Do you want to proceed to the next period?",
+  "toNextPeriod" : "Next period",
+  "endGameConfirmation": "Do you want to end the game?",
+  "stopWatchApp": "Stopwatch & Countdown",
+  "timer": "Timer",
+  "thinkingTime": "Thinking time",
+  "actionWhenLongPress": "Tap and hold the score function",
+  "subtractPoints": "Subtract points",
+  "editPoints": "Edit points",
+  "teamSetting": "Team",
+  "timerColor":" timer color",
+  "swapTeams": "Swap teams",
+  "showHammerIcon": "Show hammer icon",
+  "thinkingTimeForEE": "Thinking time（Extra Ends）",
+  "thinkingTimeChangeConfirmation":"Do you want to change the thinking time for the extra ends?",
+  "numberOfSets": "Number of sets",
+  "countingFouls": "Count fouls",
+  "howManyFoulsToDisqualify": "How many fouls does it take to get disqualified?",
+  "whenOver50Points": "If a team's score exceeds 50, it is set back to ＿",
+  "numberOfPlayers": "Number of players",
+  "one": "1 Team",
+  "two": "2 Teams",
+  "three": "3 Teams",
+  "four": "4 Teams",
+  "five": "5 Teams",
+  "six": "6 Teams",
+  "selectNumberOfTeams": "Select the number of teams.",
+  "team1": "Team1",
+  "team2": "Team2",
+  "team3": "Team3",
+  "team4": "Team4",
+  "team5": "Team5",
+  "team6": "Team6",
+  "enterTeamName": "Enter team names.",
+  "next": "Next",
+  "decideOrder": "Decide the order in which you want to pitch.",
+  "decideOrderDescription": "* Tap and hold a cell to move it up or down.",
+  "gameStart": "Start game",
+  "game": "Game",
+  "undo": "Undo",
+  "done": "Scoring",
+  "nextGame": "Next game",
+  "endGame": "End game",
+  "gameResult": "Game result",
+  "moreApps": "More apps",
+  "sequencingAndLottery": "Sequencing ＆ Lottery",
+  "multiplayerScoreboard": "Multiplayer Scoreboard",
+  "endGameConfirm": "Do you want to end the game?",
+  "end": "End game",
+  "easySeatingArrangement": "Easy Seating Arrangement",
+  "db10": "Breathing",
+  "db20": "Rustling leaves",
+  "db30": "Whisper",
+  "db40": "Library",
+  "db50": "Quiet office",
+  "db60": "Busy street, Alarm clock",
+  "db70": "Noisy restaurant",
+  "db80": "Loud radio",
+  "db90": "Dog Barking",
+  "db100": "Hair dryer, Blender",
+  "db110": "Car horns",
+  "db120": "Thunder, Jet plane take-off",
+  "db10Short": "10dB：Breathing",
+  "db20Short": "20dB：Rustling leaves",
+  "db30Short": "30dB：Whisper",
+  "db40Short": "40dB：Library",
+  "db50Short": "50dB：Quiet office",
+  "db60Short": "60dB：Busy street",
+  "db70Short": "70dB：Noisy restaurant",
+  "db80Short": "80dB：Loud radio",
+  "db90Short": "90dB：Dog Barking",
+  "db100Short": "100dB：Blender",
+  "db110Short": "110dB：Car horns",
+  "db120Short": "120dB：Jet plane take-off",
+  "max": "MAX",
+  "min": "MIN",
+  "average": "AVG",
+  "calibration": "Calibration",
+  "darkMode": "Dark mode",
+  "stop": "STOP",
+  "graph": "Chart",
+  "calendar": "Calendar",
+  "input": "Input",
+  "save": "Save",
+  "twoWeeks": "2 weeks",
+  "week": "Week",
+  "noRecords": "No Records",
+  "firstDayOfTheWeek": "First day of the week",
+  "temperatureUnit": "Temperature unit",
+  "date": "Date",
+  "time": "Time",
+  "temperature": "Temperature",
+  "oneWeek": "Week",
+  "oneMonth": "1 Month ",
+  "threeMonths": "3 Months",
+  "sixMonths": "6 Months",
+  "deleteThisRecordConfirmationMessage": "Are you sure you want to delete this record?",
+  "sun": "Sun",
+  "mon": "Mon",
+  "tue": "Tue",
+  "wed": "Wed",
+  "thu": "Thu",
+  "fri": "Fri",
+  "sat": "Sat",
+  "dateFormatForChart": "Date format for chart",
+  "day": "Day",
+  "month": "Month",
+  "registrationCompleted": "Registration complete",
+  "updateCompleted": "Update complete",
+  "monday": "Monday",
+  "sunday": "Sunday",
+  "bodyWeight": "Weight",
+  "height": "Height",
+  "yourHeight": "Your height",
+  "unitSettings": "Unit settings",
+  "bodyWeightUnit": "Weight unit",
+  "heightUnit": "Height unit",
+  "oneYear": "1 Year",
+  "setYourHeight": "Please set your height",
+  "bodyTemperatureNotepad": "Body Temperature Notepad",
+  "bodyWeightNotepad": "Body Weight Notepad",
+  "heightRecordNotepad": "Height Record Notepad",
+  "morning": "Morning",
+  "noon": "Noon",
+  "evening": "Evening",
+  "sys": "SYS",
+  "dia": "DIA",
+  "bpm": "bpm",
+  "pul": "PUL",
+  "bpmCapital": "BPM",
+  "bedtime": "Bedtime",
+  "beforeMeal": "Before meals",
+  "afterMeal": "After meals",
+  "beforeBedtime": "Before bedtime",
+  "bloodPressureNotepad": "Blood Pressure Notepad",
+  "dataList": "Data List",
+  "addSmokingLog": "Add smoking log",
+  "year": "Year",
+  "todayLogs": "Today's Log",
+  "numberOfSmoking": "Number of sticks",
+  "amountSmoked": "Smoking price",
+  "timeInterval": "Time interval",
+  "elapsedTimeSinceLastSmoking": "Elapsed time since last smoking",
+  "todaySmokingPrices": "Today's price",
+  "smokedTime": "Time",
+  "interval": "Interval",
+  "futureTimeError": "Pre-recording time is not available",
+  "bloodSugarNotepad": "Blood Sugar Notepad",
+  "cigaretteInfo": "Cigarette information",
+  "cigaretteSettings": "Cigarette settings",
+  "priceOfCigarette": "Price of a pack of cigarettes",
+  "numberOfCigarette": "Number of cigarettes in a pack",
+  "setCigaretteInfo": "Set cigarette information",
+  "priceBlankError": "Input price.",
+  "numberOfCigaretteBlankError": "Input number of cigarettes.",
+  "nonNumericError": "Non-numeric values cannot be entered.",
+  "numberOfSmokedCigarettesInThisMonth": "Monthly cigarette consumption",
+  "priceOfSmokedCigarettesInThisMonth": "Monthly cigarette consumption price",
+  "smokeLog": "Smoke Log",
+  "drinkType": "Drink type",
+  "alcoholContent": "Alc. content",
+  "intake": "Intake(g)",
+  "addFavorite": "Add favorite",
+  "addFromFavorite": "Add from favorites",
+  "favorite": "Favorite",
+  "amountOfPureAlcohol": "Amount of pure alcohol",
+  "amountOfDrinking": "Amount of drinking",
+  "drinkSettings": "Drink settings",
+  "displaySettings": "Display settings",
+  "approximateAmountOfPureAlcohol": "Approximate amount of pure alcohol",
+  "appropriateAmount": "Appropriate amount",
+  "aLittleTooMuch": "A little too much",
+  "tooMuch": "Too much",
+  "danger": "Danger",
+  "descriptionAboutPureAlcohol": "※ The appropriate dosage varies by individual depending on gender, age, and body type. Since women break down alcohol at a slower rate than men, about half of the above amount is recommended for women.",
+  "listTileHeaderLabelForDrink" : "Drink",
+  "listTileHeaderLabelForIntake" : "Intake",
+  "listTileHeaderLabelForPercentage" : "Alc. content",
+  "listTileHeaderLabelForPureAlcohol" : "Pure Alcohol",
+  "totalAmountOfPureAlcohol" : "Monthly total amount of pure alcohol",
+  "totalAmountOfDrinking" : "Monthly total amount of drinks in ml",
+  "additionComplete": "Saved.",
+  "foodName": "Food name",
+  "intakeTime": "Intake time",
+  "targetDailyProteinIntake": "Target daily protein intake",
+  "proteinIntake": "Protein intake",
+  "totalAmountOfProtein" : "Monthly total protein intake",
+  "foodNameBlankError": "Enter a value for \"Food name\".",
+  "intakeBlankError": "Enter a value for \"Intake\".",
+  "intakeNonNumericError": "Non-numeric values cannot be entered for \"Intake\".",
+  "blankError": "No value entered.",
+  "proteinSettings": "Protein settings",
+  "intakeWithoutUnit": "Intake",
+  "drinkLog": "Drink Log",
+  "proteinLog": "Protein Log",
+  "urination": "Urination",
+  "hydration": "Fluid intake",
+  "urinaryUrgency": "Urgency",
+  "urinaryIncontinence": "Incontinence",
+  "fluidIntake": "Fluid intake",
+  "amountOfUrine": "Amount of urine",
+  "urinationFrequency": "Urination frequency",
+  "data": "Data",
+  "csv": "CSV Export",
+  "createCsv": "Export as CSV",
+  "backupDate": "Backup Date : ",
+  "backup": "Backup",
+  "deleteBackupConfirmation": "Are you sure you want to delete the backup data?",
+  "restoreConfirmation": "Are you sure you want to restore the existing data by overwriting it?",
+  "backupConfirmation": "Are you sure you want to create a backup?",
+  "createdBackupDataMessage": "Backup data has been created.",
+  "completeRestoreMessage": "Restored.",
+  "deleteBackup": "Delete backup data",
+  "restore": "Restore",
+  "backupDescription": "Sign in with your Google account to back up your urine log to Google Drive.",
+  "login": "Sign In",
+  "logout": "Logout",
+  "headacheLog": "Headache Log",
+  "urinationTime": "Urination",
+  "hydrationTime": "Fluid intake",
+  "premiumService": "Premium plan",
+  "removeAds2": "Remove ads",
+  "aboutSubscription": "About subscriptions",
+  "tapIfYouHavePaid": "Tap here if you have already paid",
+  "automaticRenewalSubscription": "● Automatic Renewal Subscription",
+  "automaticRenewalSubscriptionDetail": "The contract will automatically renew if it is not canceled within 24 hours when it expires.",
+  "restoreLabel": "● Restore",
+  "restoreDetailWithGoogle": "You can restore your purchase status for free when changing devices or reinstalling the app. Please log in to your device with the same Google account used when purchasing the plan, and tap the \"Restore\" button.",
+  "restoreDetailWithApple": "You can restore your purchase status for free when changing devices or reinstalling the app. Please log in to your device with the same Apple ID used when purchasing the plan, and tap the \"Restore\" button.",
+  "cancelSubscriptionMethod": "● Confirmation and Cancellation of the Contract Period",
+  "cancelMethodWithGoogle": "You can confirm and cancel the contract period from [Play Store app > Settings > Payments & subscriptions > Subscriptions > Urine Log].",
+  "cancelMethodWithApple": "You can confirm and cancel the contract period from [Settings app > Tap your name > Tap Subscriptions > Urine Log].",
+  "notes": "● Notes",
+  "termsAndPrivacyPolicy": "● Terms of Use and Privacy Policy",
+  "disclaimer": "- Disclaimer",
+  "disclaimerDetail": "The developer shall not be responsible for any losses or damages incurred by the use of this app by the user.",
+  "handlingOfPersonalInformation": "- Handling of Personal Information",
+  "handlingOfPersonalInformationDetail": "The app handles email addresses and content of inquiries received as personal information. We use this personal information only to respond to inquiries and provide necessary information, and will not provide it to third parties without permission.",
+  "dataAnalysis": "- Data Analysis",
+  "dataAnalysisDetail": "We conduct access analysis for the convenience improvement of the app. The analysis data is collected anonymously and does not identify individuals.",
+  "howToCancelMonthlySubscription": "How to cancel your monthly subscription",
+  "termsOfUse": "Terms of Use",
+  "privacyPolicy": "Privacy Policy",
+  "dateSwitchingTime": "Date changing time",
+  "newToOld": "Newest to oldest",
+  "oldToNew": "Oldest to Newest",
+  "sortBy": "Sort by",
+  "orderOfLog": "Order of data logs",
+  "both": "Both",
+  "urinationAmountLabel": "Urination",
+  "waterIntakeLabel": "Fluid intake",
+  "hydrationTracker": "Hydration Tracker",
+  "pdfFile": "PDF",
+  "createPDF": "Create PDF",
+  "wakeUpTime": "Awake time",
+  "h24": "24h",
+  "h12": "12h(AM/PM)",
+  "timeInputMethod": "Time input method",
+  "poopTracker": "Poop Tracker",
+  "awakeTimeAndBedTime": "Awake time / Bedtime",
+  "focalLengthType": "Focal length type to display",
+  "actualFocalLength": "Actual focal length",
+  "focalLengthIn35mm": "35mm equivalent focal length",
+  "folder": "Folders"
+}
