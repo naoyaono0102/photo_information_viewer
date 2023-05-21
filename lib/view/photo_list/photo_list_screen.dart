@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
 
   Future<bool>? isLoadedPhotos;
   int crossAxisCount = 3;
-  final ScrollController? scrollController = ScrollController();
+  // final ScrollController? scrollController = ScrollController();
 
   @override
   void initState() {
@@ -33,7 +34,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
 
   @override
   void dispose() {
-    scrollController?.dispose();
+    // scrollController?.dispose();
     super.dispose();
   }
 
@@ -53,54 +54,58 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
         title: AutoSizeText(widget.folder.name),
         // title: AutoSizeText("最近の項目"),
         leading: IconButton(
-           onPressed: (){
-             final mainViewModel = context.read<MainViewModel>();
-             mainViewModel.clearCash(context);
-             Navigator.pop(context);
-           },
-           icon: Icon(Icons.arrow_back_ios)
-       ),
+            onPressed: (){
+              final mainViewModel = context.read<MainViewModel>();
+              mainViewModel.clearCash(context);
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios)
+        ),
       ),
       body: FutureBuilder<bool>(
           future: isLoadedPhotos,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               return Consumer<MainViewModel>(
-                builder: (context, mainViewModel, child) {
-                  // print("写真の数：${mainViewModel.photoList.length}");
-                  // final photoList = mainViewModel.photoList;
-                  return SafeArea(
-                    child: NotificationListener<ScrollNotification>(
-                      onNotification: (ScrollNotification scrollNotification) {
-                        if (scrollNotification is UserScrollNotification) {
-                          Future((){
-                            _handleScrollEvent(scrollNotification);
-                          });
-                          // final scrollViewHeight = scrollNotification.metrics.maxScrollExtent;
-                          // final viewportOffset = scrollNotification.metrics.pixels;
-                          // final viewportHeight = scrollNotification.metrics.viewportDimension;
-                          //
-                          // print("scrollViewHeight:$scrollViewHeight"); // スクロール一番したまでの高さ
-                          // print("viewportOffset:$viewportOffset"); // 現在の位置
-                          // print("viewportHeight:$viewportHeight"); // 1画面の高さ
-                        }
-                        return false;
-                      },
-                      child: GridView.builder(
-                          shrinkWrap: false,
-                          addAutomaticKeepAlives: true,
-                          controller: scrollController,
-                          itemCount: mainViewModel.mediaList.length,
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: crossAxisCount,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return mainViewModel.mediaList[index];
+                  builder: (context, mainViewModel, child) {
+                    // print("写真の数：${mainViewModel.photoList.length}");
+                    // final photoList = mainViewModel.photoList;
+                    return SafeArea(
+                      child: NotificationListener<ScrollNotification>(
+                        onNotification: (ScrollNotification scrollNotification) {
+                          final scrollViewHeight = scrollNotification.metrics.maxScrollExtent;
+                          final viewportOffset = scrollNotification.metrics.pixels;
+                          final viewportHeight = scrollNotification.metrics.viewportDimension;
+                          print("一番下までの高さ:$scrollViewHeight"); // スクロール一番したまでの高さ
+                          print("現在位置:$viewportOffset"); // 現在の位置
+                          print("1画面の高さ:$viewportHeight"); // 1画面の高さ
+
+                          if (scrollNotification is UserScrollNotification) {
+                            Future((){
+                              _handleScrollEvent(scrollNotification);
+                            });
+
                           }
+                          return false;
+                        },
+                        child: GridView.builder(
+                            shrinkWrap: false,
+                            addAutomaticKeepAlives: true,
+                            cacheExtent: (Platform.isAndroid) ? 0.0 : null,
+                            // controller: scrollController,
+                            itemCount: mainViewModel.mediaList.length,
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: crossAxisCount,
+                            ),
+                            itemBuilder: (BuildContext context, int index) {
+
+
+                              return mainViewModel.mediaList[index];
+                            }
+                        ),
                       ),
-                    ),
-                  );
-                }
+                    );
+                  }
               );
             }
             else {
@@ -159,7 +164,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
   // スクロール時の処理
   // 画面下までスクロールされたら次のデータをロードする
   Future<void> _handleScrollEvent(UserScrollNotification scrollNotification) async {
-    if (scrollNotification.metrics.pixels / scrollNotification.metrics.maxScrollExtent > 0.33) {
+    if (scrollNotification.metrics.pixels / scrollNotification.metrics.maxScrollExtent > 0.85) {
       print("==========スクロールが下のほうに来たので次のデータを読み込む==========");
       final mainViewModel = context.read<MainViewModel>();
       mainViewModel.getPhotos(widget.folder);

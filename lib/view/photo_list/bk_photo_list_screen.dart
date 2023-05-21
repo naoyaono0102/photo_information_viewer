@@ -1,7 +1,5 @@
-// import 'dart:io';
 // import 'dart:math';
 // import 'dart:typed_data';
-// // import 'package:path/path.dart';
 // import 'package:auto_size_text/auto_size_text.dart';
 // import 'package:exif/exif.dart';
 // import 'package:flutter/cupertino.dart';
@@ -11,11 +9,9 @@
 // import 'package:photo_manager/photo_manager.dart';
 // import 'package:provider/provider.dart';
 // import 'package:tuple/tuple.dart';
-//
-// import '../../utils/constants.dart';
+// import '../../utils/functions.dart';
 // import '../../view_models/manager_view_model.dart';
 // import '../../view_models/setting_view_model.dart';
-// import '../ad/ad_widget.dart';
 // import '../photo_detail/component/exif_value.dart';
 //
 // class PhotoListScreen extends StatefulWidget {
@@ -31,6 +27,7 @@
 //   Future<bool>? isLoadedPhotos;
 //   int crossAxisCount = 3;
 //
+//
 //   @override
 //   void initState() {
 //     super.initState();
@@ -39,7 +36,6 @@
 //
 //   @override
 //   Widget build(BuildContext context) {
-//     final Size screenSize = MediaQuery.of(context).size;
 //
 //
 //     return Scaffold(
@@ -54,57 +50,60 @@
 //             if (snapshot.connectionState == ConnectionState.done) {
 //               return Consumer<MainViewModel>(
 //                 builder: (context, mainViewModel, child) {
-//                   print("写真の数：");
-//                   print(mainViewModel.photoList.length);
-//                   final photoList = mainViewModel.photoList;
-//
+//                   final photoList = mainViewModel.photoListInCurrentPage;
 //                   return SafeArea(
-//                     child: GridView.builder(
-//                         shrinkWrap: false,
-//                         itemCount: photoList.length,
-//                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//                           crossAxisCount: crossAxisCount,
-//                         ),
-//                         itemBuilder: (BuildContext context, int index) {
-//                           return FutureBuilder(
-//                             future: Future.wait([
-//                               photoList[index].thumbnailDataWithOption(
-//                                 ThumbnailOption(
-//                                   // size: ThumbnailSize(250,250),
-//                                     size: ThumbnailSize((screenSize.width / crossAxisCount).floor(),(screenSize.width / crossAxisCount).floor()),
-//                                     quality: 100,
-//                                     format: ThumbnailFormat.jpeg
-//                                 ),
-//                               ),
-//                               getExifData(photoList[index], photoList[index].originBytes),
-//                             ]),
-//                             builder: (context, snapshot) {
-//                               if (snapshot.connectionState == ConnectionState.done) {
-//                                 final Uint8List? photoImage = snapshot.data![0] as Uint8List?;
-//                                 final Map<String, dynamic>? exifData = snapshot.data![1] as Map<String, dynamic>?;
+//                     child: NotificationListener(
+//                       onNotification: (ScrollNotification scrollNotification) {
+//                         // final scrollViewHeight = scrollNotification.metrics.maxScrollExtent;
+//                         // final viewportOffset = scrollNotification.metrics.pixels;
+//                         // final viewportHeight = scrollNotification.metrics.viewportDimension;
+//                         // print("一番下までの高さ:$scrollViewHeight"); // スクロール一番したまでの高さ
+//                         // print("現在位置:$viewportOffset"); // 現在の位置
+//                         // print("1画面の高さ:$viewportHeight"); // 1画面の高さ
 //
-//                                 // フレームサイズ
-//                                 IfdTag? imageMake = exifData?["Image Make"];
-//                                 IfdTag? imageModel = exifData?["Image Model"];
-//                                 String? fileName = exifData?["Image Title"];
-//                                 DateTime? takenTime = exifData?["Image CreateDateTime"];
-//                                 String? imageLength = exifData?["Image Length"];
-//                                 IfdTag? frameWidth = exifData?["EXIF ExifImageWidth"];
-//                                 IfdTag? frameLength = exifData?["EXIF ExifImageLength"];
-//                                 IfdTag? shutterSpeed = exifData?["EXIF ExposureTime"];
-//                                 IfdTag? fNumber = exifData?["EXIF FNumber"];
-//                                 IfdTag? iso = exifData?["EXIF ISOSpeedRatings"];
-//                                 IfdTag? ev = exifData?["EXIF ExposureBiasValue"];
-//                                 IfdTag? focalLength = exifData?["EXIF FocalLength"];
-//                                 IfdTag? focalLengthIn35mm = exifData?["EXIF FocalLengthIn35mmFilm"];
-//                                 IfdTag? lensMake = exifData?["EXIF LensMake"];
-//                                 IfdTag? lensModel = exifData?["EXIF LensModel"];
+//                         if (scrollNotification is UserScrollNotification) {
+//                           Future((){
+//                             _handleScrollEvent(scrollNotification);
+//                           });
+//
+//                         }
+//                         return false;
+//                       },
+//                       child: GridView.builder(
+//                           shrinkWrap: false,
+//                           itemCount: photoList.length,
+//                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                             crossAxisCount: crossAxisCount,
+//                           ),
+//                           itemBuilder: (BuildContext context, int index) {
+//                             return FutureBuilder(
+//                               future: getExifData(photoList[index], photoList[index].originBytes),
+//                               builder: (context, snapshot) {
+//                                 if (snapshot.connectionState == ConnectionState.done) {
+//                                   final Map<String, dynamic>? exifData = snapshot.data![1] as Map<String, dynamic>?;
+//
+//                                   // フレームサイズ
+//                                   IfdTag? imageMake = exifData?["Image Make"];
+//                                   IfdTag? imageModel = exifData?["Image Model"];
+//                                   String? fileName = exifData?["Image Title"];
+//                                   DateTime? takenTime = exifData?["Image CreateDateTime"];
+//                                   String? imageLength = exifData?["Image Length"];
+//                                   IfdTag? frameWidth = exifData?["EXIF ExifImageWidth"];
+//                                   IfdTag? frameLength = exifData?["EXIF ExifImageLength"];
+//                                   IfdTag? shutterSpeed = exifData?["EXIF ExposureTime"];
+//                                   IfdTag? fNumber = exifData?["EXIF FNumber"];
+//                                   IfdTag? iso = exifData?["EXIF ISOSpeedRatings"];
+//                                   IfdTag? ev = exifData?["EXIF ExposureBiasValue"];
+//                                   IfdTag? focalLength = exifData?["EXIF FocalLength"];
+//                                   IfdTag? focalLengthIn35mm = exifData?["EXIF FocalLengthIn35mmFilm"];
+//                                   IfdTag? lensMake = exifData?["EXIF LensMake"];
+//                                   IfdTag? lensModel = exifData?["EXIF LensModel"];
 //
 //
-//                                 return GestureDetector(
-//                                   onTap: () => _goToPhotoDetailScreen(
+//                                   return GestureDetector(
+//                                     onTap: () => _goToPhotoDetailScreen(
 //                                       context,
-//                                       photoImage,
+//                                       photoList[index],
 //                                       imageMake,
 //                                       imageModel,
 //                                       fileName,
@@ -120,86 +119,91 @@
 //                                       focalLengthIn35mm,
 //                                       lensMake,
 //                                       lensModel,
-//                                       index
-//                                   ),
-//                                   child: Container(
-//                                     margin: EdgeInsets.all(1),
-//                                     child: Stack(
-//                                       children: <Widget>[
-//                                         Positioned.fill(
-//                                           child: Image.memory(
-//                                             photoImage!,
-//                                             fit: BoxFit.cover,
-//                                           ),
-//                                         ),
-//                                         Align(
-//                                           alignment: Alignment.bottomCenter,
-//                                           child: Container(
-//                                             height: 55,
-//                                             width: double.infinity,
-//                                             color: Colors.white.withOpacity(0.6),
-//                                             // padding: EdgeInsets.symmetric(horizontal: 12),
-//                                             child: Column(
-//                                               children: [
-//                                                 Divider(height: 0, thickness: 1.0, color: Colors.black),
-//                                                 Expanded(
-//                                                   child: Row(
-//                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                                                     children: [
-//                                                       /// F値
-//                                                       Expanded(
-//                                                           child: Center(
-//                                                               child: (fNumber != null) ? ExifValue(value: 'f ${fNumber.values.toList()[0].toDouble()}', textColor: Colors.black) : ExifValue(value: 'f -', textColor: Colors.black)
-//                                                           )
-//                                                       ),
-//                                                       VerticalDivider(thickness: 1.0, color: Colors.black),
-//                                                       /// シャッタースピード（s）
-//                                                       Expanded(
-//                                                           child: Center(
-//                                                               child: (shutterSpeed != null) ? ExifValue(value: '$shutterSpeed s',textColor: Colors.black) : ExifValue(value: '- s', textColor: Colors.black)
-//                                                           )
-//                                                       ),
-//                                                     ],
-//                                                   ),
-//                                                 ),
-//                                                 Divider(height: 0, thickness: 1.0, color: Colors.black),
-//                                                 Expanded(
-//                                                   child: Row(
-//                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                                                     children: [
-//                                                       /// ISO
-//                                                       Expanded(
-//                                                           child: Center(
-//                                                               child: (iso != null) ? ExifValue(value: 'ISO $iso', textColor: Colors.black) : ExifValue(value: 'ISO -', textColor: Colors.black)
-//                                                           )
-//                                                       ),
-//                                                       VerticalDivider(thickness: 1.0, color: Colors.black),
-//                                                       /// 露出補正値（ev）
-//                                                       Expanded(
-//                                                           child: Center(
-//                                                               child: (ev != null) ? ExifValue(value: "$ev ev", textColor: Colors.black) :  ExifValue(value: "- ev", textColor: Colors.black)
-//                                                           )
-//                                                       ),
-//                                                     ],
-//                                                   ),
-//                                                 ),
-//                                               ],
+//                                       index,
+//                                     ),
+//                                     child: Container(
+//                                       margin: EdgeInsets.all(1),
+//                                       child: Stack(
+//                                         children: <Widget>[
+//                                           Positioned.fill(
+//                                             child: AssetEntityImage(
+//                                               photoList[index],
+//                                               isOriginal: false,
+//                                               thumbnailSize: const ThumbnailSize.square(250),
+//                                               fit: BoxFit.cover,
 //                                             ),
 //                                           ),
-//                                         ),
-//                                       ],
+//                                           Align(
+//                                             alignment: Alignment.bottomCenter,
+//                                             child: Container(
+//                                               height: 57,
+//                                               width: double.infinity,
+//                                               color: Colors.white.withOpacity(0.6),
+//                                               // padding: EdgeInsets.symmetric(horizontal: 12),
+//                                               child: Column(
+//                                                 children: [
+//                                                   Divider(height: 0, thickness: 1.0, color: Colors.black),
+//                                                   Expanded(
+//                                                     child: Row(
+//                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                                                       children: [
+//                                                         /// F値
+//                                                         Expanded(
+//                                                             child: Center(
+//                                                                 child: (fNumber != null) ? ExifValue(value: 'f ${fNumber.values.toList()[0].toDouble()}', textColor: Colors.black) : ExifValue(value: 'f -', textColor: Colors.black)
+//                                                             )
+//                                                         ),
+//                                                         VerticalDivider(thickness: 1.0, color: Colors.black),
+//                                                         /// シャッタースピード（s）
+//                                                         Expanded(
+//                                                             child: Center(
+//                                                                 child: (shutterSpeed != null) ? ExifValue(value: '$shutterSpeed s',textColor: Colors.black) : ExifValue(value: '- s', textColor: Colors.black)
+//                                                             )
+//                                                         ),
+//                                                       ],
+//                                                     ),
+//                                                   ),
+//                                                   Divider(height: 0, thickness: 1.0, color: Colors.black),
+//                                                   Expanded(
+//                                                     child: Row(
+//                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                                                       children: [
+//                                                         /// ISO
+//                                                         Expanded(
+//                                                             child: Center(
+//                                                                 child: (iso != null) ? ExifValue(value: 'ISO $iso', textColor: Colors.black) : ExifValue(value: 'ISO -', textColor: Colors.black)
+//                                                             )
+//                                                         ),
+//                                                         VerticalDivider(thickness: 1.0, color: Colors.black),
+//                                                         /// 露出補正値（ev）
+//                                                         Expanded(
+//                                                             child: Center(
+//                                                                 child: (ev != null)
+//                                                                     ? ExifValue(value: '${ev.values.toList()[0].toDouble().toStringAsFixed(1).replaceAll(regex, '')} ev', textColor: Colors.black)
+//                                                                     :  ExifValue(value: "- ev", textColor: Colors.black)
+//                                                             )
+//                                                         ),
+//                                                       ],
+//                                                     ),
+//                                                   ),
+//                                                 ],
+//                                               ),
+//                                             ),
+//                                           ),
+//                                         ],
+//                                       ),
 //                                     ),
-//                                   ),
-//                                 );
+//                                   );
+//                                 }
+//                                 else {
+//                                  return CupertinoActivityIndicator(
+//                                      animating: false,radius: 10
+//                                  );
+//                                 }
 //                               }
-//                               else {
-//                                return CupertinoActivityIndicator(
-//                                    animating: false,radius: 10
-//                                );
-//                               }
-//                             }
-//                           );
-//                         }
+//                             );
+//                           }
+//                       ),
 //                     ),
 //                   );
 //                 }
@@ -259,7 +263,7 @@
 //
 //   _goToPhotoDetailScreen(
 //       BuildContext context,
-//       Uint8List photo,
+//       AssetEntity photo,
 //       IfdTag? imageMake,
 //       IfdTag? imageModel,
 //       String? fileName,
@@ -280,7 +284,7 @@
 //     Navigator.push(
 //       context,
 //       MaterialPageRoute(builder: (context) => PhotoDetailScreen(
-//           photo: photo,
+//           photoEntity: photo,
 //           imageMake: imageMake,
 //           imageModel: imageModel,
 //           fileName: fileName,
@@ -389,5 +393,15 @@
 //     exifDataList["EXIF LensModel"] = exifData["EXIF LensModel"];
 //
 //     return exifDataList;
+//   }
+//
+//   // スクロール時の処理
+//   // 画面下までスクロールされたら次のデータをロードする
+//   Future<void> _handleScrollEvent(UserScrollNotification scrollNotification) async {
+//     if (scrollNotification.metrics.pixels / scrollNotification.metrics.maxScrollExtent > 0.9) {
+//       print("==========スクロールが下のほうに来たので次のデータを読み込む==========");
+//       final mainViewModel = context.read<MainViewModel>();
+//       mainViewModel.getPhotos(widget.folder);
+//     }
 //   }
 // }

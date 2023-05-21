@@ -15,7 +15,7 @@ class ManagerViewModel extends ChangeNotifier {
     if(!kIsWeb){
       adManager
         ..initAdmob()
-        // ..initInterstitialAd()
+        ..initInterstitialAd()
         ..initNativeAd();
     }
   }

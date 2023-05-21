@@ -444,21 +444,24 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
   // 画像の共有
   /////////////////////////
   _shareImage(BuildContext context, AssetEntity image, String? imageName) async {
+    final managerViewModel = context.read<ManagerViewModel>();
+    final settingViewModel = context.read<SettingViewModel>();
+
     final boxO = context.findRenderObject() as RenderBox?;
     File? file = await image.originFile;
 
     if(file != null){
-      XFile xFile = new XFile(file!.path);
+      XFile xFile = new XFile(file.path);
       await Share.shareXFiles(
         [xFile],
         subject: imageName ?? 'image',
         sharePositionOrigin: boxO!.localToGlobal(Offset.zero) & boxO.size,
       ).then((value) {
-        // if(!managerViewModel.isDeleteAd && !settingViewModel.settings.doesHideAds){
-        //   // インタースティシャル表示
-        //   print('広告を表示');
-        //   managerViewModel.loadInterstitialAd();
-        // }
+        if(!managerViewModel.isDeleteAd && !settingViewModel.settings.doesHideAds){
+          // インタースティシャル表示
+          print('広告を表示');
+          managerViewModel.loadInterstitialAd();
+        }
       });
     }
   }
@@ -500,8 +503,6 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
     fNumberValue = fNumber?.values.toList()[0].toDouble(); // F値
     focalLengthValue = focalLength?.values.toList()[0].toDouble(); // 実焦点距離
     focalLengthIn35mmValue = focalLengthIn35mm?.values.toList()[0].toDouble(); // 35mm換算焦点距離
-    // focalLengthValue =  (focalLength != null) ? "${focalLength}" : "-"; // 実焦点距離
-    // focalLengthIn35mmValue =  (focalLengthIn35mm != null) ? "${focalLengthIn35mm}" : "-"; // 35mm換算焦点距離
     cameraMaker = imageMake != null ? imageMake.toString() : '';
     cameraModel = imageModel != null ? imageModel.toString() : '';
 
@@ -544,8 +545,6 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
     fNumberValue = fNumber?.values.toList()[0].toDouble(); // F値
     focalLengthValue = focalLength?.values.toList()[0].toDouble(); // 実焦点距離
     focalLengthIn35mmValue = focalLengthIn35mm?.values.toList()[0].toDouble(); // 35mm換算焦点距離
-    // focalLengthValue =  (focalLength != null) ? "${focalLength}" : "-"; // 実焦点距離
-    // focalLengthIn35mmValue =  (focalLengthIn35mm != null) ? "${focalLengthIn35mm}" : "-"; // 35mm換算焦点距離
     cameraMaker = imageMake != null ? imageMake.toString() : '';
     cameraModel = imageModel != null ? imageModel.toString() : '';
 
@@ -574,7 +573,7 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
 
     /// Exifデータ取得
     Map<String, IfdTag> exifData = await readExifFromBytes(
-      imageData!,
+      imageData,
       details: true,
     );
 

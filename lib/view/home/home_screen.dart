@@ -81,13 +81,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemCount: mainViewModel.folderList.length,
                         itemBuilder: (BuildContext context, int index) {
                           final AssetPathEntity folder = mainViewModel.folderList[index];
+
                           return FutureBuilder(
                             future: mainViewModel.getFolderInfo(folder),
                             builder: (context, snapshot) {
                               if (snapshot.connectionState == ConnectionState.done) {
                                 final List<dynamic>? data = snapshot.data;
                                 final int numberOfPhotos = data![0];
-                                final Uint8List? topPicture = data[1];
+                                final AssetEntity? topPicture = data[1];
                                 return ListTile(
                                   title: AutoSizeText(
                                     folder.name,
@@ -106,10 +107,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ? Container(
                                       width: isTablet ? 75 : 60,
                                       height: isTablet ? 75 : 60,
-                                      child: Image.memory(
-                                          topPicture,
-                                          fit: BoxFit.cover,
+                                      child:  AssetEntityImage(
+                                        topPicture,
+                                        isOriginal: false,
+                                        thumbnailSize:  const ThumbnailSize.square(150),
+                                        thumbnailFormat: ThumbnailFormat.jpeg,
+                                        fit: BoxFit.cover,
                                       ))
+                                      // child: Image.memory(
+                                      //     topPicture,
+                                      //     fit: BoxFit.cover,
+                                      // ))
                                       : Container(
                                       width: isTablet ? 75 : 60,
                                       height: isTablet ? 75 : 60,

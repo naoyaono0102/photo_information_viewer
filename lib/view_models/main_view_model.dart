@@ -34,7 +34,7 @@ class MainViewModel extends ChangeNotifier {
   );
 
   // 1ページあたりの写真数
-  final int _sizePerPage = 30;
+  final int _sizePerPage = 36;
 
   List<Widget> mediaList = [];
   int currentPage = 0;
@@ -46,9 +46,8 @@ class MainViewModel extends ChangeNotifier {
   //////////////////////////
   Future<void> getFolders() async {
     print("============フォルダ取得処理開始============");
-    if(Platform.isAndroid){
-      PhotoManager.clearFileCache();
-    }
+    //　キャッシュクリア
+    PhotoManager.clearFileCache();
 
     final result = await PhotoManager.requestPermissionExtend();
 
@@ -63,7 +62,6 @@ class MainViewModel extends ChangeNotifier {
         folderList.forEach((folder) {
           print("フォルダ名：${folder.name}, タイプ：${folder.type}, アルバムタイプ：${folder.albumType}");
         });
-        print("folderList：${folderList.length}");
       }
       else {
         PhotoManager.openSetting();
@@ -80,11 +78,8 @@ class MainViewModel extends ChangeNotifier {
         folderList.forEach((folder) {
           print("フォルダ名：${folder.name}, タイプ：${folder.type.containsVideo()}, アルバムタイプ：${folder.albumType},}");
         });
-
-        print("folderList：${folderList.length}");
       }
       else {
-        print("権限エラー");
         PhotoManager.openSetting();
       }
     }
@@ -118,17 +113,13 @@ class MainViewModel extends ChangeNotifier {
       );
     }
 
-    // photoList = await folder.getAssetListPaged(
-    //     page: 0,
-    //     size: count
-    // );
-
     // 写真一覧を取得
     photoListInCurrentPage = await folder.getAssetListPaged(
         page: currentPage,
         size: _sizePerPage,
     );
 
+    // フォルダ内の写真をすべて取得
     photoListInFolder = await folder.getAssetListPaged(
         page: 0,
         size: count
@@ -190,7 +181,7 @@ class MainViewModel extends ChangeNotifier {
                           child: AssetEntityImage(
                             photo,
                             isOriginal: false,
-                            thumbnailSize: const ThumbnailSize.square(300),
+                            thumbnailSize: const ThumbnailSize.square(250),
                             fit: BoxFit.cover,
                           ),
                           ),
@@ -240,7 +231,7 @@ class MainViewModel extends ChangeNotifier {
                                         Expanded(
                                             child: Center(
                                                 child: (ev != null)
-                                                 ? ExifValue(value: '${ev!.values.toList()[0].toDouble().toStringAsFixed(1).replaceAll(regex, '')} ev', textColor: Colors.black)
+                                                 ? ExifValue(value: '${ev.values.toList()[0].toDouble().toStringAsFixed(1).replaceAll(regex, '')} ev', textColor: Colors.black)
                                                     :  ExifValue(value: "- ev", textColor: Colors.black)
                                             )
                                         ),
@@ -270,7 +261,7 @@ class MainViewModel extends ChangeNotifier {
     mediaList.addAll(temp);
     currentPage++;
 
-    // notifyListeners();
+    notifyListeners();
     print("========フォルダ内の写真のロード終了============");
   }
 
@@ -286,15 +277,17 @@ class MainViewModel extends ChangeNotifier {
       end: count,
     );
 
-    Uint8List? topPicture;
+    // Uint8List? topPicture;
+    AssetEntity? topPicture;
     if(photoList.isNotEmpty){
-      topPicture = await photoList[0].thumbnailDataWithOption(
-        ThumbnailOption(
-            size: ThumbnailSize(250, 250),
-            quality: 100,
-            format: ThumbnailFormat.png
-        ),
-      );
+      topPicture = photoList[0];
+      // topPicture = await photoList[0].thumbnailDataWithOption(
+      //   ThumbnailOption(
+      //       size: ThumbnailSize(250, 250),
+      //       quality: 100,
+      //       format: ThumbnailFormat.png
+      //   ),
+      // );
     }
 
 
@@ -323,7 +316,7 @@ class MainViewModel extends ChangeNotifier {
 
     /// Exifデータ取得
     Map<String, IfdTag> exifData = await readExifFromBytes(
-      imageData!,
+      imageData,
       details: true,
     );
 
@@ -429,6 +422,9 @@ class MainViewModel extends ChangeNotifier {
   /////////////////////////////
   Future<void> resetPageIndex() async {
     print("==========ページIndex初期化==========");
+    if(Platform.isAndroid){
+      PhotoManager.clearFileCache();
+    }
     mediaList = [];
     photoListInCurrentPage = [];
     photoListInFolder = [];
@@ -438,9 +434,10 @@ class MainViewModel extends ChangeNotifier {
 
   Future<void> clearCash(BuildContext context) async {
     print("==========キャッシュクリア==========");
-    // if(Platform.isAndroid){
-    //   PhotoManager.clearFileCache();
-    // }
+    if(Platform.isAndroid){
+      PhotoManager.clearFileCache();
+    }
+
     mediaList = [];
     photoListInCurrentPage = []; // フォルダの該当ページの写真一覧
     photoListInFolder = [];
@@ -448,6 +445,7 @@ class MainViewModel extends ChangeNotifier {
     lastPage = null;
     notifyListeners();
   }
+
 
 
 }

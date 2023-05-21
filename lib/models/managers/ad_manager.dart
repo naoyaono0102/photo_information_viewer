@@ -111,10 +111,10 @@ class AdManager {
   static String get interstitialAdUnitId {
     if (Platform.isAndroid) {
       return "ca-app-pub-3940256099942544/1033173712"; // テスト
-      // return "ca-app-pub-4166043434922569/7079691274"; // 本番用
+      // return "ca-app-pub-4166043434922569/8128733779"; // 本番用
     } else if (Platform.isIOS) {
-      return "ca-app-pub-3940256099942544/4411468910"; // テスト
-      // return "ca-app-pub-4166043434922569/5091822189"; // 本番用
+      // return "ca-app-pub-3940256099942544/4411468910"; // テスト
+      return "ca-app-pub-4166043434922569/7802302854"; // 本番用
     } else {
       throw new UnsupportedError("Unsupported platform");
     }

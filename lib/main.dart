@@ -10,6 +10,8 @@ import 'generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // 画像のキャッシュを上限を30MiBに抑える
+  PaintingBinding.instance.imageCache.maximumSizeBytes = 1024 * 1024 * 30;
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
+        supportedLocales: S.delegate.supportedLocales,
         theme: darkTheme.copyWith(
             primaryColor: kScaffoldBackgroundColor,
             textTheme: GoogleFonts.ibmPlexSansTextTheme(

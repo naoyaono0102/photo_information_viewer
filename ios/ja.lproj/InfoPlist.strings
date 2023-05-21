@@ -7,3 +7,6 @@
 */
 CFBundleDisplayName = "写真情報";
 NSUserTrackingUsageDescription = "許可することで、興味・関心がない広告が配信されにくくなります。";
+// アプリがフォトライブラリへアクセスする理由
+NSPhotoLibraryUsageDescription = "写真を表示するためにフォトライブラリにアクセスします。";
+
