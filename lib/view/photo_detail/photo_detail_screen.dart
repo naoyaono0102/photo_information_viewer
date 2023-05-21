@@ -443,19 +443,17 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
   /////////////////////////
   // 画像の共有
   /////////////////////////
-  _shareImage(BuildContext context, AssetEntity image, String? imageName) async {
+  Future<void> _shareImage(BuildContext context, AssetEntity image, String? imageName) async {
     final managerViewModel = context.read<ManagerViewModel>();
     final settingViewModel = context.read<SettingViewModel>();
 
-    final boxO = context.findRenderObject() as RenderBox?;
     File? file = await image.originFile;
-
     if(file != null){
-      XFile xFile = new XFile(file.path);
+      XFile xFile = await XFile(file.path);
       await Share.shareXFiles(
         [xFile],
         subject: imageName ?? 'image',
-        sharePositionOrigin: boxO!.localToGlobal(Offset.zero) & boxO.size,
+        sharePositionOrigin: shareButtonRect(),
       ).then((value) {
         if(!managerViewModel.isDeleteAd && !settingViewModel.settings.doesHideAds){
           // インタースティシャル表示
@@ -464,6 +462,20 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
         }
       });
     }
+  }
+
+  Rect shareButtonRect() {
+    final RenderBox box = context.findRenderObject() as RenderBox;
+    print(box.localToGlobal(Offset.zero) & box.size);
+
+    Size size = box.size;
+    Offset position = box.localToGlobal(Offset.zero);
+
+    return Rect.fromCenter(
+      center: position + Offset(size.width/3, size.height/3),
+      width: size.width/2,
+      height: size.height/2,
+    );
   }
 
   showPreviousPhoto(BuildContext context, Size screenSize) async {
