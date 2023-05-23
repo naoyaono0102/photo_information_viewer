@@ -74,23 +74,23 @@ class About extends StatelessWidget {
                   );
                 },
               ),
-              Container(
-                  margin: EdgeInsets.only(left: 12, right: 12),
-                  child: Divider(height: 0, color: Colors.grey)
-              ),
-              // 支援
-              ListTile(
-                title: AutoSizeText(
-                  S.of(context).supportDeveloper,
-                  style: TextStyle(
-                      fontSize: (screenSize.width > 700 && screenSize.height > 1000) ? 18 : 16,
-                      color: kBase1TextColor
-                  ),
-                ),
-                leading: Icon(Icons.favorite),
-                contentPadding: EdgeInsets.only(left: 16, top: 4, bottom: 4, right: 16),
-                onTap: () => _donate(context),
-              ),
+              // Container(
+              //     margin: EdgeInsets.only(left: 12, right: 12),
+              //     child: Divider(height: 0, color: Colors.grey)
+              // ),
+              // // 支援
+              // ListTile(
+              //   title: AutoSizeText(
+              //     S.of(context).supportDeveloper,
+              //     style: TextStyle(
+              //         fontSize: (screenSize.width > 700 && screenSize.height > 1000) ? 18 : 16,
+              //         color: kBase1TextColor
+              //     ),
+              //   ),
+              //   leading: Icon(Icons.favorite),
+              //   contentPadding: EdgeInsets.only(left: 16, top: 4, bottom: 4, right: 16),
+              //   onTap: () => _donate(context),
+              // ),
             ],
           ),
         ),
@@ -110,11 +110,11 @@ class About extends StatelessWidget {
     await FlutterEmailSender.send(email);
   }
 
-  ////////////////////
-  // 投げ銭
-  ///////////////////
-  _donate(BuildContext context) {
-    final managerViewModel = Provider.of<ManagerViewModel>(context, listen:false);
-    managerViewModel.makePurchase(PurchaseMode.DONATE);
-  }
+  // ////////////////////
+  // // 投げ銭
+  // ///////////////////
+  // _donate(BuildContext context) {
+  //   final managerViewModel = Provider.of<ManagerViewModel>(context, listen:false);
+  //   managerViewModel.makePurchase(PurchaseMode.DONATE);
+  // }
 }

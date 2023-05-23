@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +29,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) => initPlugin()); // IDFA
     isFolderLoaded = loadFolders();
     super.initState();
   }
+
+  ////////////////////////////////
+  // IDFAメッセージ
+  ///////////////////////////////
+  Future<void> initPlugin() async {
+    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
+    if (status == TrackingStatus.notDetermined) {
+      await Future.delayed(const Duration(milliseconds: 5500));
+      await AppTrackingTransparency.requestTrackingAuthorization();
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {

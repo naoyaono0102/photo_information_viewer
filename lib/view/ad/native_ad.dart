@@ -53,7 +53,8 @@ class _NativeAdState extends State<NativeAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
+    var screenSize = MediaQuery.of(context).size;
+    bool isTablet = (screenSize.width > 700 && screenSize.height > 700);
 
     if (_ad != null && isAdLoaded) {
       print('ネイティブ広告読み込み完了');
@@ -62,7 +63,7 @@ class _NativeAdState extends State<NativeAdWidget> {
           minWidth: 320, // minimum recommended width
           minHeight: 320, // minimum recommended height
           maxWidth: screenSize.width,
-          maxHeight: (screenSize.width > 700 && screenSize.height > 700) ? 720 : 500,
+          maxHeight: isTablet ? 720 : 400,
         ),
         child: AdWidget(ad: _ad!),
       );

@@ -12,5 +12,5 @@ CFBundleDisplayName = "Photo Info";
 NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads based on your interests rather than random and irrelevant ads.";
 
 // アプリがフォトライブラリへアクセスする理由
-NSPhotoLibraryUsageDescription = "This app requires access to your photo library to display your photos."; // 読み書き療法
+NSPhotoLibraryUsageDescription = "This app requires access to your photo library to retrieve and display your photos information (Focal length, ISO, shutter speed, etc.)."; // 読み書き療法
 

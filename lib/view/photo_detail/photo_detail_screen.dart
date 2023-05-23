@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:exif/exif.dart';
 import 'package:flutter/cupertino.dart';
@@ -88,6 +89,7 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) => initPlugin()); // IDFA
     final mainViewModel = context.read<MainViewModel>();
     // 画像データ
     // photoImage = widget.photo;
@@ -122,6 +124,19 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
 
     super.initState();
   }
+
+
+  ////////////////////////////////
+  // IDFAメッセージ
+  ///////////////////////////////
+  Future<void> initPlugin() async {
+    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
+    if (status == TrackingStatus.notDetermined) {
+      await Future.delayed(const Duration(milliseconds: 2500));
+      await AppTrackingTransparency.requestTrackingAuthorization();
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {

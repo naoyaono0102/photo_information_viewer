@@ -19,6 +19,7 @@ class AdmobWidget extends StatefulWidget {
 
 class _AdmobWidgetState extends State<AdmobWidget> {
 
+
   /////////////////////////
   // admob関連の変数
   /////////////////////////
@@ -106,6 +107,7 @@ class _AdmobWidgetState extends State<AdmobWidget> {
   Widget build(BuildContext context) {
 
     var screenSize = MediaQuery.of(context).size;
+    bool isTablet = (screenSize.width > 700 && screenSize.height > 700);
 
     // 広告読み込みがまだの場合、かつ広告非表示設定がONじゃない場合に読み込む
     if (!_isAdLoaded && !Provider.of<SettingViewModel>(context).settings.doesHideAds) {

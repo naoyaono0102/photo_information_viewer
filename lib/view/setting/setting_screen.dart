@@ -1,3 +1,4 @@
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_information_viewer/view/setting/common/focal_length_setting.dart';
@@ -5,16 +6,37 @@ import 'package:provider/provider.dart';
 import 'package:tuple/tuple.dart';
 import '../../generated/l10n.dart';
 import '../../utils/constants.dart';
-import '../../utils/style.dart';
 import '../../view_models/manager_view_model.dart';
 import '../../view_models/setting_view_model.dart';
 import '../ad/ad_widget.dart';
 import '../ad/native_ad.dart';
 import 'common/about.dart';
 import 'common/ad_setting.dart';
-import 'common/related_apps.dart';
 
-class SettingScreen extends StatelessWidget {
+class SettingScreen extends StatefulWidget {
+
+  @override
+  State<SettingScreen> createState() => _SettingScreenState();
+}
+
+class _SettingScreenState extends State<SettingScreen> {
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) => initPlugin()); // IDFA
+    super.initState();
+  }
+
+  ////////////////////////////////
+  // IDFAメッセージ
+  ///////////////////////////////
+  Future<void> initPlugin() async {
+    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
+    if (status == TrackingStatus.notDetermined) {
+      await Future.delayed(const Duration(milliseconds: 3500));
+      await AppTrackingTransparency.requestTrackingAuthorization();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
