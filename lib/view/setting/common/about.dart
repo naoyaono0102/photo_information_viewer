@@ -107,7 +107,13 @@ class About extends StatelessWidget {
       subject: S.of(context).subject,
       recipients: ['naoya.ono.app@gmail.com'],
     );
-    await FlutterEmailSender.send(email);
+
+    try {
+      await FlutterEmailSender.send(email);
+    } catch (error) {
+      print(error);
+    }
+
   }
 
   // ////////////////////

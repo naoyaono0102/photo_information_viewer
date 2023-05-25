@@ -80,29 +80,29 @@ class _SettingScreenState extends State<SettingScreen> {
                                     //////////////////////
                                     // 広告
                                     //////////////////////
-                                    SizedBox(height:30.0),
-                                    AdSetting(),
-                                    Selector2<ManagerViewModel,SettingViewModel,Tuple2<bool,bool>>(
-                                        selector : (context,managerViewModel,settingData) => Tuple2(
-                                            managerViewModel.isSubscribed,
-                                            settingData.settings.doesHideAds
-                                        ),
-                                        builder: (context, data, child) {
-                                          final isSubscribed = data.item1;
-                                          final doesHideAds = data.item2;
-                                          return (isSubscribed || doesHideAds)
-                                              ? Container(width: 0, height: 0)
-                                              : Container(
-                                              margin: EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 0),
-                                              padding: EdgeInsets.only(left: 4, right: 4, top: 8),
-                                              decoration: BoxDecoration(
-                                                  // color: Colors.grey.withOpacity(0.2),
-                                                  borderRadius: BorderRadius.all(Radius.circular(8))
-                                              ),
-                                              child: NativeAdWidget()
-                                          );
-                                        }
-                                    ),
+                                    // SizedBox(height:30.0),
+                                    // AdSetting(),
+                                    // Selector2<ManagerViewModel,SettingViewModel,Tuple2<bool,bool>>(
+                                    //     selector : (context,managerViewModel,settingData) => Tuple2(
+                                    //         managerViewModel.isSubscribed,
+                                    //         settingData.settings.doesHideAds
+                                    //     ),
+                                    //     builder: (context, data, child) {
+                                    //       final isSubscribed = data.item1;
+                                    //       final doesHideAds = data.item2;
+                                    //       return (isSubscribed || doesHideAds)
+                                    //           ? Container(width: 0, height: 0)
+                                    //           : Container(
+                                    //           margin: EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 0),
+                                    //           padding: EdgeInsets.only(left: 4, right: 4, top: 8),
+                                    //           decoration: BoxDecoration(
+                                    //               // color: Colors.grey.withOpacity(0.2),
+                                    //               borderRadius: BorderRadius.all(Radius.circular(8))
+                                    //           ),
+                                    //           child: NativeAdWidget()
+                                    //       );
+                                    //     }
+                                    // ),
                                     //////////////////////////////
                                     // アプリについて
                                     //////////////////////////////

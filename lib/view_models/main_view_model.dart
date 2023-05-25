@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:exif/exif.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,10 +70,13 @@ class MainViewModel extends ChangeNotifier {
     }
     else if(Platform.isIOS){
       if (result.isAuth) {
+        // ATT対応
+        initPlugin();
+
         // フォルダ一覧を取得
         folderList = await PhotoManager.getAssetPathList(
           filterOption: filterOption,
-          type: RequestType.image,
+          // type: RequestType.image,
         );
 
         folderList.forEach((folder) {
@@ -446,6 +450,16 @@ class MainViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  ////////////////////////////////
+  // IDFAメッセージ
+  ///////////////////////////////
+  Future<void> initPlugin() async {
+    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
+    if (status == TrackingStatus.notDetermined) {
+      await Future.delayed(const Duration(milliseconds: 1500));
+      await AppTrackingTransparency.requestTrackingAuthorization();
+    }
+  }
 
 
 }
