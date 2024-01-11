@@ -30,6 +30,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+
     return MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
@@ -41,6 +43,7 @@ class MyApp extends StatelessWidget {
         ],
         supportedLocales: S.delegate.supportedLocales,
         theme: darkTheme.copyWith(
+          useMaterial3: false,
             primaryColor: kScaffoldBackgroundColor,
             textTheme: GoogleFonts.ibmPlexSansTextTheme(
             //     Theme.of(context).textTheme.copyWith(

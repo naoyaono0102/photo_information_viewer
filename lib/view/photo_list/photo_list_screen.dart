@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,6 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => initPlugin()); // IDFA
     isLoadedPhotos = getPhotos();
   }
 
@@ -38,17 +36,6 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
   void dispose() {
     // scrollController?.dispose();
     super.dispose();
-  }
-
-  ////////////////////////////////
-  // IDFAメッセージ
-  ///////////////////////////////
-  Future<void> initPlugin() async {
-    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
-    if (status == TrackingStatus.notDetermined) {
-      await Future.delayed(const Duration(milliseconds: 2500));
-      await AppTrackingTransparency.requestTrackingAuthorization();
-    }
   }
 
 
@@ -132,13 +119,13 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
       bottomNavigationBar: Selector2<ManagerViewModel, SettingViewModel, Tuple2<bool, bool>>(
           selector: (context, managerViewModel, settingData) =>
               Tuple2(
-                  managerViewModel.isSubscribed,
+                  managerViewModel.isDeleteAd,
                   settingData.settings.doesHideAds
               ),
           builder: (context, data, child) {
-            final isSubscribed = data.item1;
+            final isDeleteAd = data.item1;
             final doesHideAds = data.item2;
-            if(isSubscribed || doesHideAds){
+            if(isDeleteAd || doesHideAds){
               // 広告削除・非表示の場合
               return Column(
                 mainAxisSize: MainAxisSize.min,
@@ -154,6 +141,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    SizedBox(height: 1),
                     // 広告
                     AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
                   ],

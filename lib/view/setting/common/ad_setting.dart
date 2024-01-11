@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:photo_information_viewer/generated/l10n.dart';
 import 'package:photo_information_viewer/models/managers/ad_manager.dart';
@@ -8,7 +9,9 @@ import 'package:photo_information_viewer/view_models/setting_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../../../utils/constants.dart';
 import '../../../utils/style.dart';
+import '../../../view_models/manager_view_model.dart';
 
 
 class AdSetting extends StatefulWidget {
@@ -102,7 +105,7 @@ class _AdSettingState extends State<AdSetting> {
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Text(S.of(context).hideAdsMessage),
+                      Text(S.of(context).hideAdsMessage,  style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ),
@@ -211,26 +214,44 @@ class _AdSettingState extends State<AdSetting> {
                             contentPadding: EdgeInsets.only(left: 16, top: 4, bottom: 4, right: 16),
                             onTap: () => _showHideAdsConfirm(context),
                           ),
-                          // Container(
-                          //     margin: EdgeInsets.only(left: 12, right: 12),
-                          //     child: Divider(height: 0, color: Colors.grey)
-                          // ),
-                          // /////////////////////
-                          // // 広告削除
-                          // /////////////////////
-                          // ListTile(
-                          //   title: AutoSizeText(
-                          //     S.of(context).removeAds,
-                          //     style: TextStyle(
-                          //         fontSize: (screenSize.width > 700 && screenSize.height > 1000) ? 18 : 16,
-                          //         color: kBase2TextColor
-                          //     ),
-                          //   ),
-                          //   leading: Icon(Icons.do_not_disturb),
-                          //   trailing: Icon(Icons.chevron_right),
-                          //   contentPadding: EdgeInsets.only(left: 16, top: 4, bottom: 4, right: 16),
-                          //   onTap: () => _openSubscriptionConfirmationScreen(context),
-                          // ),
+                          Container(
+                              margin: EdgeInsets.only(left: 12, right: 12),
+                              child: Divider(height: 0, color: Colors.grey)
+                          ),
+                          /////////////////////
+                          // 広告削除
+                          /////////////////////
+                          ListTile(
+                            title: AutoSizeText(
+                              S.of(context).removeAds,
+                              style: TextStyle(
+                                  fontSize: (screenSize.width > 700 && screenSize.height > 1000) ? 18 : 16,
+                                  color: kBase1TextColor
+                              ),
+                            ),
+                            leading: Icon(Icons.hide_source),
+                            contentPadding: EdgeInsets.only(left: 16, top: 4, bottom: 4, right: 16),
+                            onTap: () => _deleteAd(context),
+                          ),
+                          Container(
+                              margin: EdgeInsets.only(left: 12, right: 12),
+                              child: Divider(height: 0, color: Colors.grey)
+                          ),
+                          /////////////////////
+                          // 復元
+                          /////////////////////
+                          ListTile(
+                            title: AutoSizeText(
+                              S.of(context).recoverPurchase,
+                              style: TextStyle(
+                                  fontSize: (screenSize.width > 700 && screenSize.height > 1000) ? 18 : 16,
+                                  color: kBase1TextColor
+                              ),
+                            ),
+                            leading: Icon(Icons.cloud_sync),
+                            contentPadding: EdgeInsets.only(left: 16, top: 4, bottom: 4, right: 16),
+                            onTap: () => _recoverPurchase(context),
+                          ),
                         ],
                       ),
                     ),
@@ -250,8 +271,8 @@ class _AdSettingState extends State<AdSetting> {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(S.of(context).hideAdsDialogTitle),
-            content: Text(S.of(context).hideAdsNotes),
+            title: Text(S.of(context).hideAdsDialogTitle, style: TextStyle(color: Colors.white),),
+            content: Text(S.of(context).hideAdsNotes,  style: TextStyle(color: Colors.white)),
             actions: <Widget>[
               TextButton(
                 child: Text(S.of(context).cancel),
@@ -275,10 +296,32 @@ class _AdSettingState extends State<AdSetting> {
   }
 
 
-  // _openSubscriptionConfirmationScreen(BuildContext context) {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => SubscriptionConfirmationScreen()),
-  //   );
-  // }
+////////////////////
+// 広告削除プラン購入
+////////////////////
+  _deleteAd(BuildContext context) {
+    final managerViewModel = Provider.of<ManagerViewModel>(context, listen:false);
+
+    if(!(managerViewModel.isDeleteAd)){
+      print('購入処理実施');
+      managerViewModel.makePurchase(PurchaseMode.DELETE_AD);
+    } else {
+      print('購入済み');
+      Fluttertoast.showToast(msg:S.of(context).alreadyPurchased);
+    }
+  }
+
+////////////////////////////
+// 広告削除プランを復元する
+////////////////////////////
+  _recoverPurchase(BuildContext context) {
+    // if(Platform.isIOS){
+    print('リカバリ実行');
+    final managerViewModel = Provider.of<ManagerViewModel>(context, listen:false);
+    managerViewModel.recoverPurchase();
+    return;
+    // }
+  }
+
+
 }

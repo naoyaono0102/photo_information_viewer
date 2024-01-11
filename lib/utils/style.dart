@@ -79,6 +79,7 @@ const kFlashMessageBackgroundColor = Color(0xFF3d3d3d);
 final lightTheme = ThemeData(
   primarySwatch: Colors.blue,
   brightness: Brightness.light,
+  useMaterial3: false,
   scaffoldBackgroundColor: kScaffoldBackgroundColor,// 背景色
   appBarTheme: AppBarTheme(
       backgroundColor: kScaffoldBackgroundColor,
@@ -104,6 +105,7 @@ final lightTheme = ThemeData(
 final darkTheme = ThemeData(
   primarySwatch: Colors.yellow,
   brightness: Brightness.dark,
+  useMaterial3: false,
   scaffoldBackgroundColor: kScaffoldBackgroundColor,// 背景色
   appBarTheme: AppBarTheme(
       backgroundColor: kScaffoldBackgroundColor,

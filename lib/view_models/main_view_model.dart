@@ -1,12 +1,11 @@
 import 'dart:io';
-import 'dart:math';
 import 'dart:typed_data';
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:exif/exif.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'package:photo_manager_image_provider/photo_manager_image_provider.dart';
 
 import '../utils/functions.dart';
 import '../view/photo_detail/component/exif_value.dart';
@@ -70,8 +69,6 @@ class MainViewModel extends ChangeNotifier {
     }
     else if(Platform.isIOS){
       if (result.isAuth) {
-        // ATT対応
-        initPlugin();
 
         // フォルダ一覧を取得
         folderList = await PhotoManager.getAssetPathList(
@@ -448,17 +445,6 @@ class MainViewModel extends ChangeNotifier {
     currentPage = 0;
     lastPage = null;
     notifyListeners();
-  }
-
-  ////////////////////////////////
-  // IDFAメッセージ
-  ///////////////////////////////
-  Future<void> initPlugin() async {
-    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
-    if (status == TrackingStatus.notDetermined) {
-      await Future.delayed(const Duration(milliseconds: 1500));
-      await AppTrackingTransparency.requestTrackingAuthorization();
-    }
   }
 
 

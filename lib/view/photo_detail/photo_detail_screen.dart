@@ -1,16 +1,16 @@
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
-
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:exif/exif.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:photo_information_viewer/utils/functions.dart';
 import 'package:photo_information_viewer/view_models/main_view_model.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'package:photo_manager_image_provider/photo_manager_image_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tuple/tuple.dart';
@@ -89,7 +89,8 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) => initPlugin()); // IDFA
+    checkConsentStatus();
+
     final mainViewModel = context.read<MainViewModel>();
     // 画像データ
     // photoImage = widget.photo;
@@ -125,17 +126,65 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
     super.initState();
   }
 
-
   ////////////////////////////////
-  // IDFAメッセージ
+  // GDPRメッセージ
   ///////////////////////////////
-  Future<void> initPlugin() async {
-    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
-    if (status == TrackingStatus.notDetermined) {
-      await Future.delayed(const Duration(milliseconds: 2500));
-      await AppTrackingTransparency.requestTrackingAuthorization();
-    }
+  Future<void> checkConsentStatus() async {
+    print("=======  GDPR対応処理開始 =======");
+
+    // デバッグ用
+    // ConsentDebugSettings debugSettings = await ConsentDebugSettings(
+    //   debugGeography: DebugGeography.debugGeographyEea,
+    //   // testIdentifiers: ["F5994844C7AF2BA96B56B32D47728DBD"]
+    //   testIdentifiers: ["1057C8F78B6687AA1FDB4607D03C7BAC"]
+    // );
+    // final ConsentRequestParameters params = ConsentRequestParameters(consentDebugSettings: debugSettings);
+
+    final ConsentRequestParameters params = ConsentRequestParameters();
+
+    var status = await ConsentInformation.instance.getConsentStatus();
+    print("ステータス：${status.name}");
+    print(params.consentDebugSettings);
+
+    ConsentInformation.instance.requestConsentInfoUpdate(
+      params,
+          () async {
+        // The consent information state was updated.
+        // You are now ready to check if a form is available.
+        print("isConsentFormAvailable：${await ConsentInformation.instance.isConsentFormAvailable()}");
+        if(await ConsentInformation.instance.isConsentFormAvailable()){
+          loadConsentForm();
+        }
+      },
+          (FormError error) {
+        // Handle the error
+        print("Error：$error");
+      },
+    );
   }
+
+  Future<void> loadConsentForm() async {
+    print("====　ヨーロッパのユーザーに同意を求める画面を表示 ====");
+    ConsentForm.loadConsentForm(
+          (ConsentForm consentForm) async {
+        // Present the form
+        var status = await ConsentInformation.instance.getConsentStatus();
+        if (status == ConsentStatus.required || status == ConsentStatus.unknown) {
+          consentForm.show((formError) {
+            print(formError);
+            if(formError == null){
+              loadConsentForm();
+            }
+          });
+        }
+      },
+          (FormError formError) {
+        // Handle the error
+        print("エラー：$formError");
+      },
+    );
+  }
+
 
 
   @override
@@ -419,39 +468,40 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: Selector2<ManagerViewModel, SettingViewModel, Tuple2<bool, bool>>(
-          selector: (context, managerViewModel, settingData) =>
-              Tuple2(
-                  managerViewModel.isSubscribed,
-                  settingData.settings.doesHideAds
-              ),
-          builder: (context, data, child) {
-            final isSubscribed = data.item1;
-            final doesHideAds = data.item2;
-            if(isSubscribed || doesHideAds){
-              // 広告削除・非表示の場合
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // 広告
-                  Container(width: 0.0, height: 0.0),
-                ],
-              );
-            }
-            else {
-              // 広告表示の場合
-              return SafeArea(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // 広告
-                    AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
-                  ],
-                ),
-              );
-            }
-          }
-      ),
+      // bottomNavigationBar: Selector2<ManagerViewModel, SettingViewModel, Tuple2<bool, bool>>(
+      //     selector: (context, managerViewModel, settingData) =>
+      //         Tuple2(
+      //             managerViewModel.isDeleteAd,
+      //             settingData.settings.doesHideAds
+      //         ),
+      //     builder: (context, data, child) {
+      //       final isDeleteAd = data.item1;
+      //       final doesHideAds = data.item2;
+      //       if(isDeleteAd || doesHideAds){
+      //         // 広告削除・非表示の場合
+      //         return Column(
+      //           mainAxisSize: MainAxisSize.min,
+      //           children: [
+      //             // 広告
+      //             Container(width: 0.0, height: 0.0),
+      //           ],
+      //         );
+      //       }
+      //       else {
+      //         // 広告表示の場合
+      //         return SafeArea(
+      //           child: Column(
+      //             mainAxisSize: MainAxisSize.min,
+      //             children: [
+      //               SizedBox(height: 1),
+      //               // 広告
+      //               AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
+      //             ],
+      //           ),
+      //         );
+      //       }
+      //     }
+      // ),
     );
   }
 

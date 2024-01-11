@@ -6,7 +6,7 @@ import 'package:tuple/tuple.dart';
 import '../../utils/constants.dart';
 
 const API_KEY_ANDROID = "";
-const API_KEY_IOS = "";
+const API_KEY_IOS = "appl_dvUoPNMVnFZZJPyIjjvYAdiWVDJ";
 
 class InAppPurchaseManager {
 
