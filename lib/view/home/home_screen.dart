@@ -261,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     SizedBox(height: 1),
                     // 広告
-                    AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
+                    // AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
                   ],
                 ),
               );

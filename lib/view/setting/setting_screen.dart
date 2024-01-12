@@ -165,7 +165,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                     //////////////////////////////
                                     // SizedBox(height:30.0),
                                     // MoreApps(),
-                                    SizedBox(height: 24.0),
+                                    SizedBox(height: 50.0),
                                   ],
                                 ),
                               ],

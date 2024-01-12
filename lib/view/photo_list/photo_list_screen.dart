@@ -141,9 +141,9 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(height: 1),
+                    // SizedBox(height: 1),
                     // 広告
-                    AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
+                    // AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
                   ],
                 ),
               );

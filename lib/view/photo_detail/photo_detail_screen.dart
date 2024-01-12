@@ -198,7 +198,6 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
       photoImage = photoList[currentIndex];
     });
 
-
     return Scaffold(
       appBar: AppBar(
         title: AutoSizeText(
@@ -226,6 +225,41 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  /// 広告
+                  // Selector2<ManagerViewModel, SettingViewModel, Tuple2<bool, bool>>(
+                  //     selector: (context, managerViewModel, settingData) =>
+                  //         Tuple2(
+                  //             managerViewModel.isDeleteAd,
+                  //             settingData.settings.doesHideAds
+                  //         ),
+                  //     builder: (context, data, child) {
+                  //       final isDeleteAd = data.item1;
+                  //       final doesHideAds = data.item2;
+                  //       if(isDeleteAd || doesHideAds){
+                  //         // 広告削除・非表示の場合
+                  //         return Column(
+                  //           mainAxisSize: MainAxisSize.min,
+                  //           children: [
+                  //             // 広告
+                  //             Container(width: 0.0, height: 0.0),
+                  //           ],
+                  //         );
+                  //       }
+                  //       else {
+                  //         // 広告表示の場合
+                  //         return SafeArea(
+                  //           child: Column(
+                  //             mainAxisSize: MainAxisSize.min,
+                  //             children: [
+                  //               // 広告
+                  //               AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
+                  //               SizedBox(height: 10),
+                  //             ],
+                  //           ),
+                  //         );
+                  //       }
+                  //     }
+                  // ),
                   /// 画像
                   if(photoImage != null)
                     Container(
@@ -461,47 +495,56 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 50),
                 ],
               ),
             ),
           ),
         ),
       ),
-      // bottomNavigationBar: Selector2<ManagerViewModel, SettingViewModel, Tuple2<bool, bool>>(
-      //     selector: (context, managerViewModel, settingData) =>
-      //         Tuple2(
-      //             managerViewModel.isDeleteAd,
-      //             settingData.settings.doesHideAds
-      //         ),
-      //     builder: (context, data, child) {
-      //       final isDeleteAd = data.item1;
-      //       final doesHideAds = data.item2;
-      //       if(isDeleteAd || doesHideAds){
-      //         // 広告削除・非表示の場合
-      //         return Column(
-      //           mainAxisSize: MainAxisSize.min,
-      //           children: [
-      //             // 広告
-      //             Container(width: 0.0, height: 0.0),
-      //           ],
-      //         );
-      //       }
-      //       else {
-      //         // 広告表示の場合
-      //         return SafeArea(
-      //           child: Column(
-      //             mainAxisSize: MainAxisSize.min,
-      //             children: [
-      //               SizedBox(height: 1),
-      //               // 広告
-      //               AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
-      //             ],
-      //           ),
-      //         );
-      //       }
-      //     }
-      // ),
+      bottomNavigationBar: Selector2<ManagerViewModel, SettingViewModel, Tuple2<bool, bool>>(
+          selector: (context, managerViewModel, settingData) =>
+              Tuple2(
+                  managerViewModel.isDeleteAd,
+                  settingData.settings.doesHideAds
+              ),
+          builder: (context, data, child) {
+            final isDeleteAd = data.item1;
+            final doesHideAds = data.item2;
+            if(isDeleteAd || doesHideAds){
+              // 広告削除・非表示の場合
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // 広告
+                  Container(width: 0.0, height: 0.0),
+                ],
+              );
+            }
+            else if(screenSize.height < 800){
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // 広告
+                  Container(width: 0.0, height: 0.0),
+                ],
+              );
+            }
+            else {
+              // 広告表示の場合
+              return SafeArea(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(height: 1),
+                    // 広告
+                    AdmobWidget(bannerAdType: BannerAdType.ADAPTIVE),
+                  ],
+                ),
+              );
+            }
+          }
+      ),
     );
   }
 

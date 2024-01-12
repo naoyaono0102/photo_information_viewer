@@ -115,7 +115,7 @@ class _AdSettingState extends State<AdSetting> {
                   DateTime expiredDay = DateTime.now().add(Duration(days: reward.amount.toInt()));
 
                   // 1-2.ミリ秒を取り除く（String型になる）
-                  String formattedExpiredDay = DateFormat('yyyy-MM-dd hh:mm:ss').format(expiredDay);
+                  String formattedExpiredDay = DateFormat('yyyy-MM-dd HH:mm:ss').format(expiredDay);
 
                   // 1-3. DBに保存
                   settingViewModel.saveExpiryDay('expiryDay', formattedExpiredDay);
